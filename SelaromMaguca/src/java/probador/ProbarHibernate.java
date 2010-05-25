@@ -17,18 +17,15 @@ public class ProbarHibernate {
     private SessionFactory sessionFactory;
     
 
-    public void setSessionFactory(SessionFactory sessionFactory){
-        
-        this.sessionFactory =sessionFactory;          
+    public void setSessionFactory(SessionFactory sessionFactory){   
+        this.sessionFactory =sessionFactory;        
     }
 
     public void asociarSession(){
-
         this.setSessionFactory(new Configuration().configure().buildSessionFactory());
     }
 
     public SessionFactory getSessionFactory() {
-
         return sessionFactory;
     }
 

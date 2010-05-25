@@ -29,24 +29,30 @@ public class Inicio {
         sesion.save(cargo2);
         sesion.getTransaction().commit();
         Inicio ini = new Inicio();
-        ini.mostrarCargo();
-
-
-        
-        
+        ini.listaCargo();
+           
 //TODO: terminar la prueba de hibernate para salvar y buscar un empleado y una categoria
     }
 
-    public void  mostrarCargo(){
+
+    /**
+     * Metodo que Devuelve la lista de los cargos que se encuentran en la tabla Cargos de la BD
+     */
+
+    public List<Cargo>  listaCargo()
+    {
         ProbarHibernate laSession = new ProbarHibernate();
-        laSession.asociarSession();
         Session sesion = laSession.getSessionFactory().getCurrentSession();
         sesion.beginTransaction();//comienzo la transaccion
         List<Cargo> resultado = (List<Cargo>)sesion.createQuery("from Cargo").list();
         sesion.getTransaction().commit();
-        for (Cargo cargo : resultado) {
+        
+        for (Cargo cargo : resultado)
+        {
             System.out.println("Cargo: "+ resultado);
         }
-       
+
+    return resultado;
     }
+
 }
