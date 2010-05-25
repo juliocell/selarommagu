@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="ControladorBaseDatos" namespace="ControladorBaseDatos">
+
+  <class name="Inventario" table="INVENTARIO" lazy="false">
+
+    <id name="Id">
+		<column name="IdInventario" sql-type="number(10)" not-null="true" />
+		<generator class="sequence">
+			<param name ="sequence">
+				Id_inventario
+			</param>
+		</generator>
+    </id>
+
+	
+	<property name="PrecioProducto">
+		<column name="PrecioProducto" sql-type="number(10,2)" not-null="true"/>
+	</property>
+	
+	<property name="CantidadMinima">
+		<column name="CantidadMinima" sql-type="number(10)" not-null="true"/>
+	</property>
+	
+	<property name="CantidadExistente">
+		<column name="CantidadExistente" sql-type="number(10)" not-null="true"/>
+	</property>
+
+    <many-to-one name="Proveedor" column="fk_Proveedor" class="Proveedor"/>
+    <many-to-one name="Producto" column="fk_Producto" class="Producto"/>
+    
+    
+  </class>
+</hibernate-mapping>

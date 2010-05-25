@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="ControladorBaseDatos" namespace="ControladorBaseDatos">
+
+  <class name="Rol" table="ROL" lazy="false">
+
+    <id name="Id">
+		<column name="IdRol" sql-type="number(10)" not-null="true" />
+		<generator class="sequence">
+			<param name ="sequence">
+				Id_rol
+			</param>
+		</generator>
+    </id>
+
+    <property name="NombreRol">
+		<column name="NombreRol" sql-type="varchar2(100)" not-null="true"/>
+	</property>
+	
+	<property name="DescripcionRol">
+		<column name="DescripcionRol" sql-type="varchar2(1000)" />
+	</property>
+
+    <bag name="UsuariosRol"  lazy="true">
+      <key column="fk_IdRol"/>
+      <one-to-many class="Usuario"/>
+    </bag>
+
+    <bag name="Actividades" lazy="true" table="Rol_Actividad" cascade="all">
+      <key column="fk_Rol"/>
+      <many-to-many column="fk_Actividad" class="Actividad"/>
+    </bag>
+
+   
+
+
+
+  </class>
+</hibernate-mapping>
