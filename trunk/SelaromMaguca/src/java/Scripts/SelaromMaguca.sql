@@ -242,55 +242,55 @@ ALTER TABLE USUARIO ADD PRIMARY KEY (Cedula,Id_rol,Id_formapago)
 
 -- Create relationships section -------------------------------------------------
 
-ALTER TABLE CATEGORIA ADD CONSTRAINT Sub categoria FOREIGN KEY (FK_IdCategoria) REFERENCES CATEGORIA (IdCategoria) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE CATEGORIA ADD CONSTRAINT Sub categoria FOREIGN KEY (FK_IdCategoria) REFERENCES CATEGORIA (IdCategoria)
 ;
 
-ALTER TABLE PRODUTO_CATEGORIA ADD CONSTRAINT sobre la cual FOREIGN KEY (IdCategoria) REFERENCES CATEGORIA (IdCategoria) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE PRODUTO_CATEGORIA ADD CONSTRAINT sobre la cual FOREIGN KEY (IdCategoria) REFERENCES CATEGORIA (IdCategoria)
 ;
 
-ALTER TABLE PRODUTO_CATEGORIA ADD CONSTRAINT puede FOREIGN KEY (Id_producto) REFERENCES PRODUCTO (Id_producto) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE PRODUTO_CATEGORIA ADD CONSTRAINT puede FOREIGN KEY (Id_producto) REFERENCES PRODUCTO (Id_producto)
 ;
 
-ALTER TABLE PROVEEDOR ADD CONSTRAINT inven_proveedor FOREIGN KEY (Id_inventario, Id_producto) REFERENCES INVENTARIO (Id_inventario, Id_producto) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE PROVEEDOR ADD CONSTRAINT inven_proveedor FOREIGN KEY (Id_inventario, Id_producto) REFERENCES INVENTARIO (Id_inventario, Id_producto)
 ;
 
-ALTER TABLE ROLACTIVIDAD ADD CONSTRAINT siempre FOREIGN KEY (Id_actividad) REFERENCES ACTIVIDAD (Id_actividad) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE ROLACTIVIDAD ADD CONSTRAINT siempre FOREIGN KEY (Id_actividad) REFERENCES ACTIVIDAD (Id_actividad)
 ;
 
-ALTER TABLE ROLACTIVIDAD ADD CONSTRAINT posee FOREIGN KEY (Id_rol) REFERENCES ROL (Id_rol) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE ROLACTIVIDAD ADD CONSTRAINT posee FOREIGN KEY (Id_rol) REFERENCES ROL (Id_rol)
 ;
 
-ALTER TABLE USUARIO ADD CONSTRAINT rol FOREIGN KEY (Id_rol) REFERENCES ROL (Id_rol) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE USUARIO ADD CONSTRAINT rol FOREIGN KEY (Id_rol) REFERENCES ROL (Id_rol) O
 ;
 
-ALTER TABLE USUARIO ADD CONSTRAINT paga FOREIGN KEY (Id_formapago) REFERENCES FORMAPAGO (Id_formapago) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE USUARIO ADD CONSTRAINT paga FOREIGN KEY (Id_formapago) REFERENCES FORMAPAGO (Id_formapago)
 ;
 
-ALTER TABLE ORDENDECOMPRA ADD CONSTRAINT detalle FOREIGN KEY (IdDetalleOrden, Id_producto_Prod, Id_inventario, Id_producto) REFERENCES DETALLEORDEN (IdDetalleOrden, Id_producto_Prod, Id_inventario, Id_producto) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE ORDENDECOMPRA ADD CONSTRAINT detalle FOREIGN KEY (IdDetalleOrden, Id_producto_Prod, Id_inventario, Id_producto) REFERENCES DETALLEORDEN (IdDetalleOrden, Id_producto_Prod, Id_inventario, Id_producto)
 ;
 
-ALTER TABLE DETALLEORDEN ADD CONSTRAINT es parte FOREIGN KEY (Id_producto_Prod) REFERENCES PRODUCTO (Id_producto) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE DETALLEORDEN ADD CONSTRAINT es parte FOREIGN KEY (Id_producto_Prod) REFERENCES PRODUCTO (Id_producto) ON DELETE NO ACTION
 ;
 
-ALTER TABLE FACTURA ADD CONSTRAINT pretende FOREIGN KEY (IdDetalleFac, Id_inventario_inventario, IdDetalleOrden, Id_producto_DFact, Id_inventario_DFact, Id_producto_DF, Id_producto_detalles) REFERENCES DETALLEFACTURA (IdDetalleFac, Id_inventario_inventario, IdDetalleOrden, Id_producto_DOrd, Id_inventario, Id_producto_detalles, Id_producto) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE FACTURA ADD CONSTRAINT pretende FOREIGN KEY (IdDetalleFac, Id_inventario_inventario, IdDetalleOrden, Id_producto_DFact, Id_inventario_DFact, Id_producto_DF, Id_producto_detalles) REFERENCES DETALLEFACTURA (IdDetalleFac, Id_inventario_inventario, IdDetalleOrden, Id_producto_DOrd, Id_inventario, Id_producto_detalles, Id_producto)
 ;
 
-ALTER TABLE DETALLEORDEN ADD CONSTRAINT forma FOREIGN KEY (Id_inventario, Id_producto) REFERENCES INVENTARIO (Id_inventario, Id_producto) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE DETALLEORDEN ADD CONSTRAINT forma FOREIGN KEY (Id_inventario, Id_producto) REFERENCES INVENTARIO (Id_inventario, Id_producto)
 ;
 
-ALTER TABLE ORDENDECOMPRA ADD CONSTRAINT tiene FOREIGN KEY (Cedula, Id_rol, Id_formapago) REFERENCES USUARIO (Cedula, Id_rol, Id_formapago) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE ORDENDECOMPRA ADD CONSTRAINT tiene FOREIGN KEY (Cedula, Id_rol, Id_formapago) REFERENCES USUARIO (Cedula, Id_rol, Id_formapago)
 ;
 
-ALTER TABLE DETALLEFACTURA ADD CONSTRAINT invent FOREIGN KEY (Id_inventario_inventario, Id_producto) REFERENCES INVENTARIO (Id_inventario, Id_producto) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE DETALLEFACTURA ADD CONSTRAINT invent FOREIGN KEY (Id_inventario_inventario, Id_producto) REFERENCES INVENTARIO (Id_inventario, Id_producto)
 ;
 
-ALTER TABLE FACTURA ADD CONSTRAINT facturacion FOREIGN KEY (Id_orden, IdDetalleOrden_OCompr, Id_producto_OrdComp, Id_inventario, Cedula, Id_rol, Id_formapago, Id_producto_OC) REFERENCES ORDENDECOMPRA (Id_orden, IdDetalleOrden, Id_producto_Prod, Id_inventario, Cedula, Id_rol, Id_formapago, Id_producto) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE FACTURA ADD CONSTRAINT facturacion FOREIGN KEY (Id_orden, IdDetalleOrden_OCompr, Id_producto_OrdComp, Id_inventario, Cedula, Id_rol, Id_formapago, Id_producto_OC) REFERENCES ORDENDECOMPRA (Id_orden, IdDetalleOrden, Id_producto_Prod, Id_inventario, Cedula, Id_rol, Id_formapago, Id_producto)
 ;
 
-ALTER TABLE HISTORIALORDEN ADD CONSTRAINT historial FOREIGN KEY (Id_orden, IdDetalleOrden, Id_producto_Prod, Id_inventario, Cedula, Id_rol, Id_formapago, Id_producto) REFERENCES ORDENDECOMPRA (Id_orden, IdDetalleOrden, Id_producto_Prod, Id_inventario, Cedula, Id_rol, Id_formapago, Id_producto) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE HISTORIALORDEN ADD CONSTRAINT historial FOREIGN KEY (Id_orden, IdDetalleOrden, Id_producto_Prod, Id_inventario, Cedula, Id_rol, Id_formapago, Id_producto) REFERENCES ORDENDECOMPRA (Id_orden, IdDetalleOrden, Id_producto_Prod, Id_inventario, Cedula, Id_rol, Id_formapago, Id_producto)
 ;
 
-ALTER TABLE DETALLEFACTURA ADD CONSTRAINT Relationship27 FOREIGN KEY (IdDetalleOrden, Id_producto_DOrd, Id_inventario, Id_producto_detalles) REFERENCES DETALLEORDEN (IdDetalleOrden, Id_producto_Prod, Id_inventario, Id_producto) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE DETALLEFACTURA ADD CONSTRAINT Relationship27 FOREIGN KEY (IdDetalleOrden, Id_producto_DOrd, Id_inventario, Id_producto_detalles) REFERENCES DETALLEORDEN (IdDetalleOrden, Id_producto_Prod, Id_inventario, Id_producto)
 ;
 
 ALTER TABLE INVENTARIO ADD CONSTRAINT producto inv FOREIGN KEY (Id_producto) REFERENCES PRODUCTO (Id_producto) ON DELETE NO ACTION ON UPDATE NO ACTION
