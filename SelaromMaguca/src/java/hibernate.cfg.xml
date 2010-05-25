@@ -7,5 +7,9 @@
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/selarom</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">slayer</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <mapping resource="datos/Empleados.hbm.xml"/>
+    <mapping resource="datos/Cargo.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

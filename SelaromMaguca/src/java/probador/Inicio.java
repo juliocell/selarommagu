@@ -21,11 +21,12 @@ public class Inicio {
         Session sesion = laSession.getSessionFactory().getCurrentSession();
         sesion.beginTransaction();//comienzo la transaccion
         Cargo cargo = new Cargo(1, "Cajero");
-        Cargo cargo1 = new Cargo(1, "Gerente");
-        Cargo cargo2 = new Cargo(1, "Administrador");
+        Cargo cargo1 = new Cargo(2, "Gerente");
+        Cargo cargo2 = new Cargo(3, "Administrador");
         sesion.save(cargo);//salvo un cargo
         sesion.save(cargo1);
         sesion.save(cargo2);
+        sesion.getTransaction().commit();
         
         
 //TODO: terminar la prueba de hibernate para salvar y buscar un empleado y una categoria
