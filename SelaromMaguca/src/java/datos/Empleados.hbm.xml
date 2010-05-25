@@ -1,55 +1,54 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated May 23, 2010 7:11:24 PM by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-    <class name="datos.Empleados" table="Empleados" catalog="selarom">
-        <composite-id name="id" class="datos.EmpleadosId">
-            <key-property name="idEmpleados" type="int">
-                <column name="idEmpleados" />
-            </key-property>
-            <key-property name="cargoIdCargo" type="int">
-                <column name="Cargo_idCargo" />
-            </key-property>
-        </composite-id>
-        <many-to-one name="cargo" class="datos.Cargo" update="false" insert="false" fetch="select">
-            <column name="Cargo_idCargo" not-null="true" />
-        </many-to-one>
-        <property name="empleadosNombre" type="string">
-            <column name="EmpleadosNombre" length="45" not-null="true" />
-        </property>
-        <property name="empleadosApellido" type="string">
-            <column name="EmpleadosApellido" length="45" not-null="true" />
-        </property>
-        <property name="empleadosCi" type="int">
-            <column name="EmpleadosCI" not-null="true" />
-        </property>
-        <property name="empleadosDir" type="string">
-            <column name="EmpleadosDir" length="250" />
-        </property>
-        <property name="empleadosTlfCasa" type="string">
-            <column name="EmpleadosTlfCasa" length="20" />
-        </property>
-        <property name="empleadosTlfMovil" type="string">
-            <column name="EmpleadosTlfMovil" length="20" />
-        </property>
-        <property name="empleadosContrasena" type="string">
-            <column name="EmpleadosContrasena" length="20" not-null="true" />
-        </property>
-        <property name="empleadosFechaIng" type="date">
-            <column name="EmpleadosFechaIng" length="10" not-null="true" />
-        </property>
-        <property name="empleadosFechaFin" type="date">
-            <column name="EmpleadosFechaFin" length="10" />
-        </property>
-        <property name="empleadosSueldoBase" type="java.lang.Integer">
-            <column name="EmpleadosSueldoBase" />
-        </property>
-        <property name="empleadosLogin" type="string">
-            <column name="EmpleadosLogin" length="20" not-null="true" />
-        </property>
-        <property name="empleadosCorreo" type="string">
-            <column name="EmpleadosCorreo" length="45" not-null="true" />
-        </property>
-    </class>
+  <class catalog="selarom" name="datos.Empleados" table="Empleados">
+    <composite-id class="datos.EmpleadosId" name="id">
+      <key-property name="idEmpleados" type="int">
+        <column name="idEmpleados"/>
+      </key-property>
+      <key-property name="cargoIdCargo" type="int">
+        <column name="Cargo_idCargo"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="datos.Cargo" fetch="select" insert="false" name="cargo" update="false">
+      <column name="Cargo_idCargo" not-null="true"/>
+    </many-to-one>
+    <property name="empleadosNombre" type="string">
+      <column length="45" name="EmpleadosNombre" not-null="true"/>
+    </property>
+    <property name="empleadosApellido" type="string">
+      <column length="45" name="EmpleadosApellido" not-null="true"/>
+    </property>
+    <property name="empleadosCi" type="int">
+      <column name="EmpleadosCI" not-null="true"/>
+    </property>
+    <property name="empleadosDir" type="string">
+      <column length="250" name="EmpleadosDir"/>
+    </property>
+    <property name="empleadosTlfCasa" type="string">
+      <column length="20" name="EmpleadosTlfCasa"/>
+    </property>
+    <property name="empleadosTlfMovil" type="string">
+      <column length="20" name="EmpleadosTlfMovil"/>
+    </property>
+    <property name="empleadosContrasena" type="string">
+      <column length="20" name="EmpleadosContrasena" not-null="true"/>
+    </property>
+    <property name="empleadosFechaIng" type="date">
+      <column length="10" name="EmpleadosFechaIng" not-null="true"/>
+    </property>
+    <property name="empleadosFechaFin" type="date">
+      <column length="10" name="EmpleadosFechaFin"/>
+    </property>
+    <property name="empleadosSueldoBase" type="java.lang.Integer">
+      <column name="EmpleadosSueldoBase"/>
+    </property>
+    <property name="empleadosLogin" type="string">
+      <column length="20" name="EmpleadosLogin" not-null="true"/>
+    </property>
+    <property name="empleadosCorreo" type="string">
+      <column length="45" name="EmpleadosCorreo" not-null="true"/>
+    </property>
+  </class>
 </hibernate-mapping>

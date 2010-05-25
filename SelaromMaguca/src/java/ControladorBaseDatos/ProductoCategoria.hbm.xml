@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="ControladorBaseDatos" namespace="ControladorBaseDatos">
+
+  <class name="ProductoCategoria" table="Producto_Categoria" lazy="false">
+
+    <composite-id name="Id" class="PairIdComponent">
+      <key-property name="Key1" column="Fk_Producto" type="System.Int32"/>
+      <key-property name="Key2" column="Fk_Categoria" type="System.Int32"/>
+    </composite-id>
+
+
+    <many-to-one name="Producto" column="fk_Producto" class="Producto"/>
+
+    <many-to-one name="Categoria" column="fk_Categoria" class="Categoria"/>
+ 
+
+  </class>
+</hibernate-mapping>
