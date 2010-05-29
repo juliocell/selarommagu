@@ -19,15 +19,16 @@ public class Inicio {
     {
         ProbarHibernate laSession = new ProbarHibernate();
         laSession.asociarSession();
-        Session sesion = laSession.getSessionFactory().getCurrentSession();
+        Session sesion = laSession.getSessionFactory().getCurrentSession();        
+//        Cargo cargo = new Cargo(10,"prueba martes 1");
+//        Cargo cargo1 = new Cargo(11,"prueba martes 2");
+//        Cargo cargo2 = new Cargo(12,"prueba martes 3");
         sesion.beginTransaction();//comienzo la transaccion
-        Cargo cargo = new Cargo(4, "Cajero");
-        Cargo cargo1 = new Cargo(5, "Gerente");
-        Cargo cargo2 = new Cargo(6, "Administrador");
-        sesion.save(cargo);//salvo un cargo
-        sesion.save(cargo1);
-        sesion.save(cargo2);
-        sesion.getTransaction().commit();
+//        sesion.save(cargo);//salvo un cargo
+//        sesion.save(cargo1);
+//        sesion.save(cargo2);
+//        sesion.getTransaction().commit();
+        Cargo aux =(Cargo)sesion.get(Cargo.class, 3);
         Inicio ini = new Inicio();
         ini.listaCargo();
            
