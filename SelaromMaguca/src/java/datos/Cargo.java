@@ -16,6 +16,13 @@ public class Cargo  implements java.io.Serializable {
      private Set empleadoses = new HashSet(0);
 
     public Cargo() {
+
+    }
+
+
+
+    public Cargo(String cargoDescripcion) {
+        this.cargoDescripcion= cargoDescripcion;
     }
 
 	
@@ -52,7 +59,35 @@ public class Cargo  implements java.io.Serializable {
     }
 
 
+  public boolean equal(Object obj){
+    int arr[]={0,0};
+    //si obj es identico tiene la misma referencia
+    if(this == obj){
+        return true;
+    }
+    else{
+        if(obj instanceof Cargo){
+            Cargo car = (Cargo)obj;
+            if(car.getIdCargo()==this.getIdCargo()){
+                arr[0]=1;
+            }
+            if(car.getCargoDescripcion().equalsIgnoreCase(this.getCargoDescripcion())){
+                arr[1]=1;
+            }
 
+            if((arr[0]==1) && (arr[1]==1)){               
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        else{
+            return false;
+        }
+    }
+
+}// fin de metodo equal
 
 }
 

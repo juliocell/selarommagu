@@ -21,8 +21,12 @@ public class ProbarHibernate {
         this.sessionFactory =sessionFactory;        
     }
 
+
     public void asociarSession(){
-        this.setSessionFactory(new Configuration().configure().buildSessionFactory());
+        if(sessionFactory==null){
+            this.setSessionFactory(new Configuration().configure().buildSessionFactory());
+        }
+        
     }
 
     public SessionFactory getSessionFactory() {
