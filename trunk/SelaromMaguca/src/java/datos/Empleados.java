@@ -10,11 +10,11 @@ import java.util.Date;
 public class Empleados  implements java.io.Serializable {
 
 
-     private EmpleadosId id;
+     private int idEmpleado;
      private Cargo cargo;
      private String empleadosNombre;
      private String empleadosApellido;
-     private int empleadosCi;
+     private  int empleadosCi;
      private String empleadosDir;
      private String empleadosTlfCasa;
      private String empleadosTlfMovil;
@@ -29,8 +29,8 @@ public class Empleados  implements java.io.Serializable {
     }
 
 	
-    public Empleados(EmpleadosId id, Cargo cargo, String empleadosNombre, String empleadosApellido, int empleadosCi, String empleadosContrasena, Date empleadosFechaIng, String empleadosLogin, String empleadosCorreo) {
-        this.id = id;
+    public Empleados(int id, Cargo cargo, String empleadosNombre, String empleadosApellido, int empleadosCi, String empleadosContrasena, Date empleadosFechaIng, String empleadosLogin, String empleadosCorreo) {
+        this.idEmpleado = id;
         this.cargo = cargo;
         this.empleadosNombre = empleadosNombre;
         this.empleadosApellido = empleadosApellido;
@@ -41,8 +41,8 @@ public class Empleados  implements java.io.Serializable {
         this.empleadosCorreo = empleadosCorreo;
     }
     
-    public Empleados(EmpleadosId id, Cargo cargo, String empleadosNombre, String empleadosApellido, int empleadosCi, String empleadosDir, String empleadosTlfCasa, String empleadosTlfMovil, String empleadosContrasena, Date empleadosFechaIng, Date empleadosFechaFin, Integer empleadosSueldoBase, String empleadosLogin, String empleadosCorreo) {
-       this.id = id;
+    public Empleados(int id, Cargo cargo, String empleadosNombre, String empleadosApellido, int empleadosCi, String empleadosDir, String empleadosTlfCasa, String empleadosTlfMovil, String empleadosContrasena, Date empleadosFechaIng, Date empleadosFechaFin, Integer empleadosSueldoBase, String empleadosLogin, String empleadosCorreo) {
+       this.idEmpleado = id;
        this.cargo = cargo;
        this.empleadosNombre = empleadosNombre;
        this.empleadosApellido = empleadosApellido;
@@ -58,12 +58,12 @@ public class Empleados  implements java.io.Serializable {
        this.empleadosCorreo = empleadosCorreo;
     }
    
-    public EmpleadosId getId() {
-        return this.id;
+    public int getId() {
+        return this.idEmpleado;
     }
     
-    private void setId(EmpleadosId id) {
-        this.id = id;
+    private void setId(int id) {
+        this.idEmpleado = id;
     }
     public Cargo getCargo() {
         return this.cargo;
