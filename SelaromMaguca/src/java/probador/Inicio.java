@@ -19,7 +19,7 @@ public class Inicio {
     public static void main(String Args[])
     {
          Cargo cargo = new Cargo();
-        cargo.setCargoDescripcion("Gerente");
+        cargo.setCargoDescripcion("gato");
 
 
 
