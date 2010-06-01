@@ -3,9 +3,9 @@
 <!-- Generated May 23, 2010 7:11:24 PM by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
   <class catalog="selarom" name="datos.Cargo" table="Cargo">
-    <id name="idCargo" type="int">
+    <id name="idCargo" type="int" unsaved-value="-1">
       <column name="idCargo"/>
-      <generator class="identity"/>
+      <generator class="native"/>
     </id>
     <property name="cargoDescripcion" type="string">
       <column length="45" name="CargoDescripcion" not-null="true"/>
