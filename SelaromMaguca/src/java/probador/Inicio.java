@@ -7,6 +7,7 @@ package probador;
 
 import datos.Cargo;
 import java.util.List;
+import modelo.CargoDaoImpl;
 import org.hibernate.Session;
 
 /**
@@ -17,21 +18,31 @@ public class Inicio {
 
     public static void main(String Args[])
     {
+         Cargo cargo = new Cargo();
+        cargo.setCargoDescripcion("Gerente");
+
+
+
+
+
         ProbarHibernate laSession = new ProbarHibernate();
         laSession.asociarSession();
-        Session sesion = laSession.getSessionFactory().getCurrentSession();        
+        Session sesion = laSession.getSessionFactory().getCurrentSession();
+        CargoDaoImpl nuevoCargo = new CargoDaoImpl();
+        nuevoCargo.salvarCargo(cargo, laSession);
+
 //        Cargo cargo = new Cargo(10,"prueba martes 1");
 //        Cargo cargo1 = new Cargo(11,"prueba martes 2");
 //        Cargo cargo2 = new Cargo(12,"prueba martes 3");
-        sesion.beginTransaction();//comienzo la transaccion
+//        sesion.beginTransaction();//comienzo la transaccion
 //        sesion.save(cargo);//salvo un cargo
 //        sesion.save(cargo1);
 //        sesion.save(cargo2);
 //        sesion.getTransaction().commit();
-        Cargo aux =(Cargo)sesion.get(Cargo.class, 3);
-        Inicio ini = new Inicio();
-        ini.listaCargo();
-           
+//        Cargo aux =(Cargo)sesion.get(Cargo.class, 3);
+//        Inicio ini = new Inicio();
+//        ini.listaCargo();
+//
 //TODO: terminar la prueba de hibernate para salvar y buscar un empleado y una categoria
     }
 
