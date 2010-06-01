@@ -10,7 +10,6 @@ import datos.Cargo;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import probador.ProbarHibernate;
 
 /**
