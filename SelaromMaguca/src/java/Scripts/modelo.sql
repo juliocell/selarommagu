@@ -8,12 +8,14 @@ USE `selarom`;
 -- -----------------------------------------------------
 -- Table `selarom`.`Cargo`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `selarom`.`Cargo` (
-  `idCargo` INT(11) NOT NULL ,
-  `CargoDescripcion` VARCHAR(45) NOT NULL ,
-  PRIMARY KEY (`idCargo`) )
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+CREATE TABLE IF NOT EXISTS `cargo` (
+  `idCargo` int(11) NOT NULL AUTO_INCREMENT,
+  `CargoDescripcion` varchar(45) NOT NULL,
+  PRIMARY KEY (`idCargo`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+
+
 
 
 -- -----------------------------------------------------
