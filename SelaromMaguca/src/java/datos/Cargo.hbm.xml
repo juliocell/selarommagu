@@ -5,7 +5,7 @@
   <class catalog="selarom" name="datos.Cargo" table="Cargo">
     <id name="idCargo" type="int">
       <column name="idCargo"/>
-      <generator class="assigned"/>
+      <generator class="identity"/>
     </id>
     <property name="cargoDescripcion" type="string">
       <column length="45" name="CargoDescripcion" not-null="true"/>

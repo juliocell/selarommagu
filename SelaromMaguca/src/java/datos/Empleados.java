@@ -40,6 +40,7 @@ public class Empleados  implements java.io.Serializable {
         this.empleadosLogin = empleadosLogin;
         this.empleadosCorreo = empleadosCorreo;
     }
+    
     public Empleados(EmpleadosId id, Cargo cargo, String empleadosNombre, String empleadosApellido, int empleadosCi, String empleadosDir, String empleadosTlfCasa, String empleadosTlfMovil, String empleadosContrasena, Date empleadosFechaIng, Date empleadosFechaFin, Integer empleadosSueldoBase, String empleadosLogin, String empleadosCorreo) {
        this.id = id;
        this.cargo = cargo;
