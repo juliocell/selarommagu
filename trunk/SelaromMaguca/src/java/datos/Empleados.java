@@ -58,11 +58,11 @@ public class Empleados  implements java.io.Serializable {
        this.empleadosCorreo = empleadosCorreo;
     }
    
-    public int getId() {
+    public int getidEmpleado() {
         return this.idEmpleado;
     }
     
-    private void setId(int id) {
+    private void setidEmpleado(int id) {
         this.idEmpleado = id;
     }
     public Cargo getCargo() {
