@@ -3,18 +3,12 @@
 <!-- Generated May 23, 2010 7:11:24 PM by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
   <class catalog="selarom" name="datos.Cargo" table="Cargo">
-    <id name="idCargo" type="int" unsaved-value="-1">
+    <id name="idCargo" type="int">
       <column name="idCargo"/>
       <generator class="native"/>
     </id>
-    <property name="cargoDescripcion" type="string">
+    <property name="cargoDescripcion" type="string" unique="true">
       <column length="45" name="CargoDescripcion" not-null="true"/>
-    </property>
-    <set inverse="true" name="empleadoses">
-      <key>
-        <column name="Cargo_idCargo" not-null="true"/>
-      </key>
-      <one-to-many class="datos.Empleados"/>
-    </set>
+    </property> 
   </class>
 </hibernate-mapping>

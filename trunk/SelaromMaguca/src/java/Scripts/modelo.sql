@@ -8,8 +8,8 @@ USE `selarom`;
 -- -----------------------------------------------------
 -- Table `selarom`.`Cargo`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `cargo` (
-  `idCargo` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `selarom`.`Cargo` (
+  `idCargo` INT(11) NOT NULL AUTO_INCREMENT,
   `CargoDescripcion` varchar(45) NOT NULL,
   PRIMARY KEY (`idCargo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `cargo` (
 -- -----------------------------------------------------
 -- Table `selarom`.`Empleados`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `selarom`.`Empleados` (
+CREATE  TABLE IF NOT EXISTS `selarom`.`Empleado` (
   `idEmpleados` INT(11) NOT NULL AUTO_INCREMENT ,
   `EmpleadosNombre` VARCHAR(45) NOT NULL ,
   `EmpleadosApellido` VARCHAR(45) NOT NULL ,
@@ -36,9 +36,9 @@ CREATE  TABLE IF NOT EXISTS `selarom`.`Empleados` (
   `EmpleadosLogin` VARCHAR(20) NOT NULL ,
   `EmpleadosCorreo` VARCHAR(45) NOT NULL ,
   `Cargo_idCargo` INT(11) NOT NULL ,
-  PRIMARY KEY (`idEmpleados`, `Cargo_idCargo`) ,
-  INDEX `fk_Empleados_Cargo` (`Cargo_idCargo` ASC) ,
-  CONSTRAINT `fk_Empleados_Cargo`
+  PRIMARY KEY (`idEmpleados`),
+  INDEX `fk_Empleado_Cargo` (`Cargo_idCargo` ASC) ,
+  CONSTRAINT `fk_Empleado_Cargo`
     FOREIGN KEY (`Cargo_idCargo` )
     REFERENCES `selarom`.`Cargo` (`idCargo` )
     ON DELETE NO ACTION
