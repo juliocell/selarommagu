@@ -2,12 +2,12 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated May 23, 2010 7:11:24 PM by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-  <class catalog="selarom" name="datos.Empleados" table="Empleados">
-   <id name="idEmpleado" type="int" unsaved-value="-1">
+  <class catalog="selarom" name="datos.Empleado" table="Empleado">
+    <id name="idEmpleado" type="int">
       <column name="idEmpleados"/>
       <generator class="native"/>
-    </id>   
-    <many-to-one class="datos.Cargo" fetch="select" insert="false" name="cargo" update="false">
+    </id>
+    <many-to-one name="cargo" class="datos.Cargo">
       <column name="Cargo_idCargo" not-null="true"/>
     </many-to-one>
     <property name="empleadosNombre" type="string">

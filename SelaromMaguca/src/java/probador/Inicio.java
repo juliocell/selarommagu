@@ -6,8 +6,12 @@
 package probador;
 
 import datos.Cargo;
+import datos.Empleado;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import modelo.CargoDaoImpl;
+import modelo.EmpleadoDaoImpl;
 import org.hibernate.Session;
 
 /**
@@ -18,18 +22,28 @@ public class Inicio {
 
     public static void main(String Args[])
     {
-         Cargo cargo = new Cargo();
-        cargo.setCargoDescripcion("gato");
-
-
-
-
-
-        ProbarHibernate laSession = new ProbarHibernate();
-        laSession.asociarSession();
-        Session sesion = laSession.getSessionFactory().getCurrentSession();
-        CargoDaoImpl nuevoCargo = new CargoDaoImpl();
-        nuevoCargo.salvarCargo(cargo, laSession);
+        
+        ProbarHibernate pro = new ProbarHibernate();
+        pro.asociarSession();
+        Session sesion = pro.getSessionFactory().getCurrentSession();
+        sesion.beginTransaction();//comienzo la transaccion
+        Cargo cargo = new Cargo("Gerente");
+        CargoDaoImpl gestionar = new CargoDaoImpl();
+        gestionar.salvarCargo(cargo, pro);
+        Cargo aux =(Cargo)gestionar.buscarCargoPorNombre("Gerente", pro);
+        Empleado emp = new Empleado(cargo, "freddy", "Nogales", 14015477, "slayer", new Date(), "isak", "mcdsx10@cantv.net");
+        emp.setCargo(aux);
+        EmpleadoDaoImpl gestEmp = new EmpleadoDaoImpl();
+        gestEmp.salvarEmpleado(emp, pro);
+        
+//        cargo.setEmpleadoses(new HashSet());
+//        cargo.getEmpleadoses().add(emp);
+//        ProbarHibernate laSession = new ProbarHibernate();
+//        laSession.asociarSession();
+//        Session sesion = laSession.getSessionFactory().getCurrentSession();
+//    
+//TODO probar el archivo inicio de nuevo para verificar que guarde al empleado
+        
 
 //        Cargo cargo = new Cargo(10,"prueba martes 1");
 //        Cargo cargo1 = new Cargo(11,"prueba martes 2");

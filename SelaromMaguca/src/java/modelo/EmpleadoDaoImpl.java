@@ -6,7 +6,8 @@
 package modelo;
 
 //import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
-import datos.Cargo;
+import datos.Empleado;
+import datos.Empleado;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -16,34 +17,33 @@ import probador.ProbarHibernate;
  *
  * @author isak
  */
-public class CargoDaoImpl{
+public class EmpleadoDaoImpl{
 
 
-    public void salvarCargo(Cargo elCargo, ProbarHibernate pro){
+    public void salvarEmpleado(Empleado elEmpleado, ProbarHibernate pro){
         //ProbarHibernate laSession = new ProbarHibernate();
         //Session sesion = laSession.getSessionFactory().getCurrentSession();
         Session sesion = pro.getSessionFactory().getCurrentSession();
         sesion.beginTransaction();//comienzo la transaccion
-        sesion.save(elCargo);
-        sesion.flush();
+        sesion.save(elEmpleado);
         sesion.getTransaction().commit();
         
     }
 
-    public boolean eliminarCargo(Cargo aBorrar, ProbarHibernate pro){
+    public boolean eliminarEmpleado(Empleado aBorrar, ProbarHibernate pro){
 
         Session sesion = pro.getSessionFactory().getCurrentSession();
         sesion.beginTransaction();//comienzo la transaccion
 
         try{
-            Cargo aux = (Cargo)sesion.load(Cargo.class,aBorrar.getIdCargo());
+            Empleado aux = (Empleado)sesion.load(Empleado.class,aBorrar.getidEmpleado());
             sesion.delete(aux);
             sesion.getTransaction().commit();
             //sesion.close();
             return true;
         }
         catch(HibernateException ex){
-            System.out.println("ERROR al eliminar Cargo:" + ex.getMessage());
+            System.out.println("ERROR al eliminar Empleado:" + ex.getMessage());
             sesion.getTransaction().rollback();
             return false;
         }
@@ -53,60 +53,60 @@ public class CargoDaoImpl{
         }
     }
 
-    public void actualizarCargo(Cargo aActualizar, ProbarHibernate pro){
+    public void actualizarEmpleado(Empleado aActualizar, ProbarHibernate pro){
         Session sesion = pro.getSessionFactory().getCurrentSession();
         sesion.beginTransaction();//comienzo la transaccion        
         sesion.update(aActualizar);
         sesion.close();
     }
 
-    public Cargo buscarCargoPorNombre(String nombre , ProbarHibernate pro){
+    public Empleado buscarEmpleadoPorNombre(String nombre , ProbarHibernate pro){
         
-        String elQuery= "from Cargo as c where c.cargoDescripcion = "+ "\'"+nombre+"\'";// armo el query
+        String elQuery= "from Empleados as c where c.EmpleadoDescripcion = "+ "\'"+nombre+"\'";// armo el query
         //ProbarHibernate laSession = new ProbarHibernate();
         //Session sesion = laSession.getSessionFactory().getCurrentSession();
         Session sesion = pro.getSessionFactory().getCurrentSession();
         sesion.beginTransaction();//comienzo la transaccion
-        List<Cargo> lista= sesion.createQuery(elQuery).list();
-        Cargo aux=null;
-        for (Cargo cargo : lista) {
-            aux = cargo;
+        List<Empleado> lista= sesion.createQuery(elQuery).list();
+        Empleado aux=null;
+        for (Empleado empleado : lista) {
+            aux = empleado;
         }
         sesion.getTransaction().commit();
         
         return aux;
     }
 
-    public Cargo buscarCargoPorId(int id, ProbarHibernate pro){
+    public Empleado buscarEmpleadoPorId(int id, ProbarHibernate pro){
         Session sesion = pro.getSessionFactory().getCurrentSession();
         sesion.beginTransaction();//comienzo la transaccion
         
         try
         {
-            Cargo elCargo = (Cargo)sesion.load(Cargo.class, id);
-            return elCargo;
+            Empleado elEmpleado = (Empleado)sesion.load(Empleado.class, id);
+            return elEmpleado;
         }
         catch(HibernateException ex){
-            System.out.println("ERROR al buscar el Cargo:" + ex.getMessage());
+            System.out.println("ERROR al buscar el Empleado:" + ex.getMessage());
             return null;
         }
     }
 
     /**
-     * Metodo que devuelve una lista de objectos tipo Cargo
+     * Metodo que devuelve una lista de objectos tipo Empleado
      * @return
      */
-    public List<Cargo>  listaCargo(ProbarHibernate pro)
+    public List<Empleado>  listaEmpleado(ProbarHibernate pro)
     {
         Session sesion = pro.getSessionFactory().getCurrentSession();
         sesion.beginTransaction();//comienzo la transaccion
-        List<Cargo> resultado = (List<Cargo>)sesion.createQuery("from Cargo").list();
+        List<Empleado> resultado = (List<Empleado>)sesion.createQuery("from Empleado").list();
         sesion.getTransaction().commit();
         if(resultado!=null)
         {
-            for (Cargo cargo : resultado)
+            for (Empleado empleado : resultado)
             {
-                System.out.println("Cargo: "+ resultado);
+                System.out.println("Empleado: "+ resultado);
             }
 
             return resultado;
@@ -122,7 +122,7 @@ public class CargoDaoImpl{
   
     
 
-//TODO: hacer las pruebas de actualizar, buscar y listarCargo
+//TODO: hacer las pruebas de actualizar, buscar y listarEmpleado
 
 }
 

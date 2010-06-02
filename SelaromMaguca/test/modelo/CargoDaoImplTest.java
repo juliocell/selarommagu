@@ -86,23 +86,23 @@ public class CargoDaoImplTest {
     @Test
     public void testActualizarCargo(){
         System.out.println("probando actualizarCargo");
-        Cargo aActualizar = new Cargo(43,"cargo a actualizar");
+        Cargo aActualizar = new Cargo("cargo a actualizar");
         CargoDaoImpl instance = new CargoDaoImpl();
         probador.ProbarHibernate pro = new ProbarHibernate();
         pro.asociarSession();
         instance.salvarCargo(aActualizar,pro);//salvo el cargo
-        Cargo aux = (Cargo)instance.buscarCargoPorId(43 , pro);
+        Cargo aux = (Cargo)instance.buscarCargoPorNombre("cargo a actualizar" , pro);
         assertNotNull(aux);//compruebo que sea encontrado el objeto
         aux.setCargoDescripcion("cargo actualizado");
         instance.actualizarCargo(aux, pro);
-        Cargo aux2 = (Cargo)instance.buscarCargoPorId(43, pro);
+        Cargo aux2 = (Cargo)instance.buscarCargoPorNombre("cargo actualizado", pro);
         assertNotNull(aux2);//compruebo que sea encontrado el objeto
         assertTrue(aux2.getIdCargo()==aux.getIdCargo());//comparo que el cambio se haya hecho efectivo
         instance.eliminarCargo(aux2, pro);
         instance.eliminarCargo(aux, pro);
         
     }
- 
+ //TODO revisar el actualizar da problemas;
     /**
      * Test of buscarCargoPorNombre method, of class CargoDaoImpl.
      */
@@ -149,7 +149,7 @@ public class CargoDaoImplTest {
         instance.eliminarCargo(car1, pro);
         instance.eliminarCargo(car2, pro);
         instance.eliminarCargo(car3, pro);
-     
+     //TODO revisar la lista pues da problemas de antes del otro metodo no se borra el asiento
     }
 
   /**
@@ -166,7 +166,7 @@ public class CargoDaoImplTest {
         Cargo result = instance.buscarCargoPorId(100,pro);
         assertTrue(expResult.equal(result));
         instance.eliminarCargo(result, pro);
-        
+        //TODO REvisar el metodo pues ya no se guarda el objeto con el id que le doy
     }
 
 
