@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : faces-config.xml
+    Created on : 1 de junio de 2010, 02:05 AM
+    Author     : william
+    Description:
+        Purpose of the document follows.
+-->
+
+
+    <faces-config>
+<managed-bean>
+<managed-bean-name>controladorCargo</managed-bean-name>
+<managed-bean-class>controlador.controladorCargo</managed-bean-class>
+<managed-bean-scope>session</managed-bean-scope>
+</managed-bean>
+
+<managed-bean>
+<managed-bean-name>cargo</managed-bean-name>
+<managed-bean-class>datos.Cargo</managed-bean-class>
+<managed-bean-scope>session</managed-bean-scope>
+</managed-bean>
+
+
+<navigation-rule>
+    <from-view-id>/index.xhtml</from-view-id>
+<navigation-case>
+<from-outcome>cargoPrincipal</from-outcome>
+<to-view-id>/cargoPrincipal.xhtml</to-view-id>
+</navigation-case>
+</navigation-rule>
+
+
+
+</faces-config>
+
+
