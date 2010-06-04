@@ -6,7 +6,8 @@
 package modelo;
 
 
-import datos.Cargo;
+import selarom.datos.hibernate.CargoDaoImpl;
+import selarom.datos.beans.Cargo;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;

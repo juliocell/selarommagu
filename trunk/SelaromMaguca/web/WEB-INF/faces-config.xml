@@ -15,15 +15,21 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
 version="2.0">
     
 <managed-bean>
-<managed-bean-name>controladorCargo</managed-bean-name>
-<managed-bean-class>controlador.controladorCargo</managed-bean-class>
-<managed-bean-scope>session</managed-bean-scope>
+    <managed-bean-name>controladorCargo</managed-bean-name>
+    <managed-bean-class>selarom.controlador.ControladorCargo</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
 </managed-bean>
 
 <managed-bean>
-<managed-bean-name>cargo</managed-bean-name>
-<managed-bean-class>datos.Cargo</managed-bean-class>
-<managed-bean-scope>session</managed-bean-scope>
+    <managed-bean-name>cargo</managed-bean-name>
+    <managed-bean-class>selarom.datos.beans.Cargo</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+</managed-bean>
+
+<managed-bean>
+    <managed-bean-name>loginController</managed-bean-name>
+    <managed-bean-class>selarom.controlador.LoginController</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
 </managed-bean>
 
 
@@ -38,5 +44,6 @@ version="2.0">
 
 
 </faces-config>
+
 
 

@@ -9,7 +9,7 @@
     <property name="hibernate.connection.password">slayer</property>
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.current_session_context_class">thread</property>
-    <mapping resource="datos/Empleado.hbm.xml"/>
-    <mapping resource="datos/Cargo.hbm.xml"/>
+    <mapping resource="selarom.datos.beans/Empleado.hbm.xml"/>
+    <mapping resource="selarom.datos.beans/Cargo.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

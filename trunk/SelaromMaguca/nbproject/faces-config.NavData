@@ -2,9 +2,47 @@
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
-        <Node id="index.xhtml" x="400" y="150" zoom="true"/>
+        <Node id="multiflex32/header4.html" x="400" y="450" zoom="true"/>
+        <Node id="multiflex32/header1.html" x="1150" y="150" zoom="true"/>
+        <Node id="multiflex32/manfar_plantilla_productos_modificar_stock.html" x="400" y="750" zoom="true"/>
+        <Node id="multiflex32/manfar_plantilla_productos_facturacion.html" x="150" y="750" zoom="true"/>
+        <Node id="multiflex32/layout4.html" x="900" y="150" zoom="true"/>
+        <Node id="multiflex32/PruebaAsientosContables.html" x="1400" y="150" zoom="true"/>
+        <Node id="multiflex32/manfar_plantilla_cliente_agregar.html" x="1650" y="300" zoom="true"/>
+        <Node id="multiflex32/layout1.html" x="1400" y="300" zoom="true"/>
+        <Node id="multiflex32/login.html" x="900" y="300" zoom="true"/>
+        <Node id="multiflex32/login.xhtml" x="150" y="1050" zoom="true"/>
         <Node id="cargoPrincipal.xhtml" x="150" y="300" zoom="true"/>
+        <Node id="multiflex32/layout3.html" x="150" y="900" zoom="true"/>
+        <Node id="multiflex32/header6.html" x="1650" y="150" zoom="true"/>
+        <Node id="multiflex32/manfar_plantilla_facturaDef.html" x="650" y="300" zoom="true"/>
+        <Node id="multiflex32/manfar_plantilla_productos.html" x="400" y="300" zoom="true"/>
+        <Node id="multiflex32/header3.html" x="900" y="750" zoom="true"/>
+        <Node id="multiflex32/manfar_plantilla_productos_eliminar.html" x="2150" y="150" zoom="true"/>
+        <Node id="multiflex32/manfar_plantilla_productos_agregar.html" x="650" y="900" zoom="true"/>
+        <Node id="multiflex32/header2.html" x="400" y="1050" zoom="true"/>
+        <Node id="multiflex32/manfar_plantilla_cliente_eliminar.html" x="1150" y="450" zoom="true"/>
+        <Node id="multiflex32/manfar_plantilla_productos_modificar.html" x="150" y="1200" zoom="true"/>
+        <Node id="multiflex32/manfar_plantilla_proveedor_agregar.html" x="1900" y="150" zoom="true"/>
+        <Node id="multiflex32/header7.html" x="900" y="600" zoom="true"/>
+        <Node id="multiflex32/layout2.html" x="650" y="450" zoom="true"/>
+        <Node id="multiflex32/manfar_plantilla_cliente_modificar.html" x="650" y="600" zoom="true"/>
+        <Node id="multiflex32/manfar_plantilla_proveedor_buscar.html" x="400" y="600" zoom="true"/>
+        <Node id="multiflex32/header5.html" x="150" y="450" zoom="true"/>
         <Node id="indexPrueba.html" x="150" y="150" zoom="true"/>
+        <Node id="multiflex32/manfar_plantilla.html" x="900" y="450" zoom="true"/>
+        <Node id="multiflex32/manfar_plantilla_cliente_buscar.html" x="1900" y="300" zoom="true"/>
+        <Node id="multiflex32/index.html" x="650" y="150" zoom="true"/>
+        <Node id="multiflex32/manfar_plantilla_factura.html" x="1650" y="450" zoom="true"/>
+        <Node id="multiflex32/manfar_plantilla_cuentasPP.html" x="1400" y="600" zoom="true"/>
+        <Node id="resources/ezcomp/out.xhtml" x="650" y="750" zoom="true"/>
+        <Node id="index.xhtml" x="400" y="150" zoom="true"/>
+        <Node id="multiflex32/manfar_plantilla_factura_buscar.html" x="1400" y="450" zoom="true"/>
+        <Node id="multiflex32/manfar_plantilla_proveedores.html" x="400" y="900" zoom="true"/>
+        <Node id="multiflex32/manfar_plantilla_proveedor_modificar.html" x="150" y="600" zoom="true"/>
+        <Node id="multiflex32/tecnologias.html" x="1150" y="300" zoom="true"/>
+        <Node id="multiflex32/manfar_plantilla_productos_buscar.html" x="1150" y="750" zoom="true"/>
+        <Node id="multiflex32/layout5.html" x="1150" y="600" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>
