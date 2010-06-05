@@ -5,7 +5,7 @@
 
 package hibernate;
 
-import hibernate.Excepciones.HibernateSalvarCargoException;
+import hibernate.excepciones.HibernateSalvarCargoException;
 import datos.Cargo;
 import datos.Empleado;
 import java.util.Date;

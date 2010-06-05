@@ -5,8 +5,8 @@
 
 package hibernate;
 
-import hibernate.Excepciones.UsuarioNoExisteException;
-import hibernate.Excepciones.HibernateLoginException;
+import hibernate.excepciones.UsuarioNoExisteException;
+import hibernate.excepciones.HibernateLoginException;
 import datos.Empleado;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;

@@ -7,9 +7,9 @@ package hibernate;
 
 import datos.Cargo;
 import datos.Empleado;
-import hibernate.Excepciones.HibernateLoginException;
-import hibernate.Excepciones.HibernateSalvarCargoException;
-import hibernate.Excepciones.UsuarioNoExisteException;
+import hibernate.excepciones.HibernateLoginException;
+import hibernate.excepciones.HibernateSalvarCargoException;
+import hibernate.excepciones.UsuarioNoExisteException;
 import java.util.Date;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

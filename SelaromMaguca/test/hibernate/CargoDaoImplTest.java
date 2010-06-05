@@ -9,7 +9,7 @@ package hibernate;
 import hibernate.CargoDaoImpl;
 import datos.Cargo;
 //import hibernate.HibernateUtil;
-import hibernate.Excepciones.HibernateSalvarCargoException;
+import hibernate.excepciones.HibernateSalvarCargoException;
 import hibernate.HibernateUtil;
 import java.util.List;
 import org.hibernate.Session;
