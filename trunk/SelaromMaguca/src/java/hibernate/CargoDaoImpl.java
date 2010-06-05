@@ -6,6 +6,7 @@
 package hibernate;
 
 //import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
+import hibernate.Excepciones.HibernateSalvarCargoException;
 import datos.Cargo;
 import java.util.List;
 import org.hibernate.HibernateException;
@@ -32,7 +33,7 @@ public class CargoDaoImpl {
         Transaction tx = sesion.beginTransaction();
         try
         {
-        sesion.save(elCargo);
+            sesion.save(elCargo);
         }
         catch(HibernateException ex){
             System.out.println("EXCEPCION: MENSAJE DE LA EXC = " + ex.getMessage());

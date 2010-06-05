@@ -7,7 +7,7 @@ package probador;
 
 import datos.Cargo;
 import datos.Empleado;
-import hibernate.HibernateSalvarCargoException;
+import hibernate.Excepciones.HibernateSalvarCargoException;
 import java.util.Date;
 import java.util.List;
 import hibernate.CargoDaoImpl;
@@ -54,9 +54,7 @@ public class Inicio {
      */
 
     public List<Cargo>  listaCargo()
-    {
-        ProbarHibernate laSession = new ProbarHibernate();
-        Session sesion = laSession.getSessionFactory().getCurrentSession();
+    {       
         sesion.beginTransaction();//comienzo la transaccion
         List<Cargo> resultado = (List<Cargo>)sesion.createQuery("from Cargo").list();
         sesion.getTransaction().commit();

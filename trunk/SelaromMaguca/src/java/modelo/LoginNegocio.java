@@ -5,9 +5,9 @@
 
 package modelo;
 
-import hibernate.HibernateLoginException;
+import hibernate.Excepciones.HibernateLoginException;
 import hibernate.LoginDaoImpl;
-import hibernate.UsuarioNoExisteException;
+import hibernate.Excepciones.UsuarioNoExisteException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

@@ -5,6 +5,8 @@
 
 package hibernate;
 
+import hibernate.Excepciones.UsuarioNoExisteException;
+import hibernate.Excepciones.HibernateLoginException;
 import datos.Empleado;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -28,7 +30,7 @@ public class LoginDaoImpl {
    public String buscarUsuarioPorLogin(String usuario, String password) throws UsuarioNoExisteException,HibernateLoginException{
 
         String elQuery= "from Empleado as c where c.empleadosLogin =" + "\'"+usuario+"\'"; // armo el query      
-        Transaction tx = sesion.beginTransaction();//comienzo la transaccion
+     //   Transaction tx = sesion.beginTransaction();//comienzo la transaccion
 
         try
         {       
@@ -39,7 +41,7 @@ public class LoginDaoImpl {
                 throw new UsuarioNoExisteException("El usuario No existe dentro de la BD");                
             }
 
-            if(aux.getEmpleadosLogin().equalsIgnoreCase(password))
+            if(aux.getEmpleadosContrasena().equalsIgnoreCase(password))
             {
                 return aux.getEmpleadosNombre() + " " + aux.getEmpleadosApellido();
             }
