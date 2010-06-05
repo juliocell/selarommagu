@@ -8,7 +8,9 @@ package modelo;
 
 import hibernate.CargoDaoImpl;
 import datos.Cargo;
+import hibernate.HibernateUtil;
 import java.util.List;
+import org.hibernate.Session;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -22,6 +24,7 @@ import static org.junit.Assert.*;
  * @author isak
  */
 public class CargoDaoImplTest {
+    Session sesion = null;
 
     public CargoDaoImplTest() {
     }
@@ -45,18 +48,20 @@ public class CargoDaoImplTest {
     /**
      * Test of salvarCargo method, of class CargoDaoImpl.
      */
+    public void inicializarSesion(){
+        
+        this.sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+    }
+
     @Test
     public void testSalvarCargo() {
         System.out.println("probando salvarCargo");        
         Cargo elCargo = new Cargo(18,"test cajero");
-        CargoDaoImpl instance = new CargoDaoImpl();
-        probador.ProbarHibernate pro = new ProbarHibernate();
-        pro.asociarSession();
-        instance.salvarCargo(elCargo,pro);
-        Cargo aux =(Cargo)instance.buscarCargoPorNombre("test cajero",pro);
-            
+        CargoDaoImpl instance = new CargoDaoImpl();     
+        instance.salvarCargo(elCargo);
+        Cargo aux =(Cargo)instance.buscarCargoPorNombre("test cajero");            
         assertTrue(elCargo.equal(aux));
-        instance.eliminarCargo(elCargo, pro);
+        instance.eliminarCargo(elCargo);
       
         //assertTrue(elCargo.equal(elCargo2));
         //TODO: poner unique al campo de nombre de la categoria
@@ -71,11 +76,9 @@ public class CargoDaoImplTest {
     public void testEliminarCargo() {
         System.out.println("probando eliminarCargo");
         Cargo aBorrar =  new Cargo(15, "obrero");
-        CargoDaoImpl instance = new CargoDaoImpl();
-        probador.ProbarHibernate pro = new ProbarHibernate();
-        pro.asociarSession();
-        instance.salvarCargo(aBorrar, pro);
-        boolean aux =  instance.eliminarCargo(aBorrar, pro);
+        CargoDaoImpl instance = new CargoDaoImpl();       
+        instance.salvarCargo(aBorrar);
+        boolean aux =  instance.eliminarCargo(aBorrar);
         assertTrue(aux);
         
     }
@@ -88,19 +91,17 @@ public class CargoDaoImplTest {
     public void testActualizarCargo(){
         System.out.println("probando actualizarCargo");
         Cargo aActualizar = new Cargo("cargo a actualizar");
-        CargoDaoImpl instance = new CargoDaoImpl();
-        probador.ProbarHibernate pro = new ProbarHibernate();
-        pro.asociarSession();
-        instance.salvarCargo(aActualizar,pro);//salvo el cargo
-        Cargo aux = (Cargo)instance.buscarCargoPorNombre("cargo a actualizar" , pro);
+        CargoDaoImpl instance = new CargoDaoImpl();      
+        instance.salvarCargo(aActualizar);//salvo el cargo
+        Cargo aux = (Cargo)instance.buscarCargoPorNombre("cargo a actualizar");
         assertNotNull(aux);//compruebo que sea encontrado el objeto
         aux.setCargoDescripcion("cargo actualizado");
-        instance.actualizarCargo(aux, pro);
-        Cargo aux2 = (Cargo)instance.buscarCargoPorNombre("cargo actualizado", pro);
+        instance.actualizarCargo(aux);
+        Cargo aux2 = (Cargo)instance.buscarCargoPorNombre("cargo actualizado");
         assertNotNull(aux2);//compruebo que sea encontrado el objeto
         assertTrue(aux2.getIdCargo()==aux.getIdCargo());//comparo que el cambio se haya hecho efectivo
-        instance.eliminarCargo(aux2, pro);
-        instance.eliminarCargo(aux, pro);
+        instance.eliminarCargo(aux2);
+        instance.eliminarCargo(aux);
         
     }
  //TODO revisar el actualizar da problemas;
@@ -110,14 +111,12 @@ public class CargoDaoImplTest {
     @Test
     public void testBuscarCargoPorNombre() {
         System.out.println("probando buscarCargoPorNombre");
-        probador.ProbarHibernate pro = new ProbarHibernate();
-        pro.asociarSession();
         CargoDaoImpl instance = new CargoDaoImpl();
         Cargo expResult = new Cargo(100,"objeto prueba");
-        instance.salvarCargo(expResult, pro);
-        Cargo result = instance.buscarCargoPorNombre("objeto prueba",pro);
+        instance.salvarCargo(expResult);
+        Cargo result = instance.buscarCargoPorNombre("objeto prueba");
         assertTrue(expResult.equal(result));
-        instance.eliminarCargo(expResult, pro);
+        instance.eliminarCargo(expResult);
         
     }
 
@@ -131,13 +130,11 @@ public class CargoDaoImplTest {
         Cargo car1 = new Cargo(500, "car1");
         Cargo car2 = new Cargo(600, "car2");
         Cargo car3 = new Cargo(700, "car3");
-        probador.ProbarHibernate pro = new ProbarHibernate();
-        pro.asociarSession();
         CargoDaoImpl instance = new CargoDaoImpl();
-        instance.salvarCargo(car1, pro);
-        instance.salvarCargo(car2, pro);
-        instance.salvarCargo(car3, pro);
-        List<Cargo> result = instance.listaCargo(pro);
+        instance.salvarCargo(car1);
+        instance.salvarCargo(car2);
+        instance.salvarCargo(car3);
+        List<Cargo> result = instance.listaCargo();
         int x=0;
         Cargo arreglo[]= new Cargo[3];
         for (Cargo cargo : result) {
@@ -147,9 +144,9 @@ public class CargoDaoImplTest {
         assertTrue(arreglo[0].equal(car1));
         assertTrue(arreglo[1].equal(car2));
         assertTrue(arreglo[2].equal(car3));
-        instance.eliminarCargo(car1, pro);
-        instance.eliminarCargo(car2, pro);
-        instance.eliminarCargo(car3, pro);
+        instance.eliminarCargo(car1);
+        instance.eliminarCargo(car2);
+        instance.eliminarCargo(car3);
      //TODO revisar la lista pues da problemas de antes del otro metodo no se borra el asiento
     }
 
@@ -159,14 +156,12 @@ public class CargoDaoImplTest {
     @Test
     public void testBuscarCargoPorId() {
         System.out.println("probando buscarCargoPorNombre");
-        probador.ProbarHibernate pro = new ProbarHibernate();
-        pro.asociarSession();
         CargoDaoImpl instance = new CargoDaoImpl();
         Cargo expResult = new Cargo(100,"objeto prueba");
-        instance.salvarCargo(expResult, pro);
-        Cargo result = instance.buscarCargoPorId(100,pro);
+        instance.salvarCargo(expResult);
+        Cargo result = instance.buscarCargoPorId(100);
         assertTrue(expResult.equal(result));
-        instance.eliminarCargo(result, pro);
+        instance.eliminarCargo(result);
         //TODO REvisar el metodo pues ya no se guarda el objeto con el id que le doy
     }
 

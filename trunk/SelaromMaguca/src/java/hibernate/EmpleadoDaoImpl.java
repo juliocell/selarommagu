@@ -7,11 +7,10 @@ package hibernate;
 
 //import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
 import datos.Empleado;
-import datos.Empleado;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import probador.ProbarHibernate;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -19,32 +18,36 @@ import probador.ProbarHibernate;
  */
 public class EmpleadoDaoImpl{
 
+    Session sesion=null;
 
-    public void salvarEmpleado(Empleado elEmpleado, ProbarHibernate pro){
-        //ProbarHibernate laSession = new ProbarHibernate();
-        //Session sesion = laSession.getSessionFactory().getCurrentSession();
-        Session sesion = pro.getSessionFactory().getCurrentSession();
-        sesion.beginTransaction();//comienzo la transaccion
+    public EmpleadoDaoImpl()
+    {
+        this.sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+    }
+
+
+
+
+    public void salvarEmpleado(Empleado elEmpleado){
+        Transaction tx = sesion.beginTransaction();//comienzo la transaccion
         sesion.save(elEmpleado);
-        sesion.getTransaction().commit();
+        tx.commit();
         
     }
 
-    public boolean eliminarEmpleado(Empleado aBorrar, ProbarHibernate pro){
+    public boolean eliminarEmpleado(Empleado aBorrar){
 
-        Session sesion = pro.getSessionFactory().getCurrentSession();
-        sesion.beginTransaction();//comienzo la transaccion
-
+        Transaction tx = sesion.beginTransaction();//comienzo la transaccion
+            
         try{
             Empleado aux = (Empleado)sesion.load(Empleado.class,aBorrar.getidEmpleado());
             sesion.delete(aux);
-            sesion.getTransaction().commit();
-            //sesion.close();
+            tx.commit();           
             return true;
         }
         catch(HibernateException ex){
-            System.out.println("ERROR al eliminar Empleado:" + ex.getMessage());
-            sesion.getTransaction().rollback();
+            tx.rollback();
+            System.out.println("ERROR al eliminar Empleado:" + ex.getMessage());            
             return false;
         }
         finally{
@@ -53,37 +56,32 @@ public class EmpleadoDaoImpl{
         }
     }
 
-    public void actualizarEmpleado(Empleado aActualizar, ProbarHibernate pro){
-        Session sesion = pro.getSessionFactory().getCurrentSession();
-        sesion.beginTransaction();//comienzo la transaccion        
+    public void actualizarEmpleado(Empleado aActualizar){
+        Transaction tx = sesion.beginTransaction();//comienzo la transaccion
         sesion.update(aActualizar);
-        sesion.close();
+        tx.commit();
     }
 
-    public Empleado buscarEmpleadoPorNombre(String nombre , ProbarHibernate pro){
+    public Empleado buscarEmpleadoPorNombre(String nombre){
         
         String elQuery= "from Empleados as c where c.EmpleadoDescripcion = "+ "\'"+nombre+"\'";// armo el query
-        //ProbarHibernate laSession = new ProbarHibernate();
-        //Session sesion = laSession.getSessionFactory().getCurrentSession();
-        Session sesion = pro.getSessionFactory().getCurrentSession();
-        sesion.beginTransaction();//comienzo la transaccion
+        Transaction tx = sesion.beginTransaction();//comienzo la transaccion
         List<Empleado> lista= sesion.createQuery(elQuery).list();
         Empleado aux=null;
         for (Empleado empleado : lista) {
             aux = empleado;
         }
-        sesion.getTransaction().commit();
-        
+        //sesion.getTransaction().commit();
+        tx.commit();
         return aux;
     }
 
-    public Empleado buscarEmpleadoPorId(int id, ProbarHibernate pro){
-        Session sesion = pro.getSessionFactory().getCurrentSession();
-        sesion.beginTransaction();//comienzo la transaccion
-        
+    public Empleado buscarEmpleadoPorId(int id){
+        Transaction tx = sesion.beginTransaction();//comienzo la transaccion
         try
         {
             Empleado elEmpleado = (Empleado)sesion.load(Empleado.class, id);
+            tx.commit();
             return elEmpleado;
         }
         catch(HibernateException ex){
@@ -96,12 +94,11 @@ public class EmpleadoDaoImpl{
      * Metodo que devuelve una lista de objectos tipo Empleado
      * @return
      */
-    public List<Empleado>  listaEmpleado(ProbarHibernate pro)
+    public List<Empleado>  listaEmpleado()
     {
-        Session sesion = pro.getSessionFactory().getCurrentSession();
-        sesion.beginTransaction();//comienzo la transaccion
+        Transaction tx = sesion.beginTransaction();//comienzo la transaccion
         List<Empleado> resultado = (List<Empleado>)sesion.createQuery("from Empleado").list();
-        sesion.getTransaction().commit();
+        tx.commit();
         if(resultado!=null)
         {
             for (Empleado empleado : resultado)

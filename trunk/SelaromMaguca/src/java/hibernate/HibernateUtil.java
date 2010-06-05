@@ -1,8 +1,8 @@
 package hibernate;
 
 
-import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 /**
  * Clase Hibernate util que me permite tener las sessionFactory y crear las sesiones sencilla
@@ -18,7 +18,12 @@ public class HibernateUtil
     {
         try
         {
-            sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
+           /**
+            * Aqui le indico a hibernate que inicialice tomando
+            * los datos de configuracion del hibernate.cfg.xml de la raiz
+            */
+
+            sessionFactory = new Configuration().configure().buildSessionFactory();
             
         } catch (Throwable ex) {
             // muestro el error
