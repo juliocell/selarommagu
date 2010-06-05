@@ -6,7 +6,7 @@
 package hibernate;
 
 //import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
-import hibernate.Excepciones.HibernateSalvarCargoException;
+import hibernate.excepciones.HibernateSalvarCargoException;
 import datos.Cargo;
 import java.util.List;
 import org.hibernate.HibernateException;

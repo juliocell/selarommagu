@@ -7,7 +7,7 @@ package probador;
 
 import datos.Cargo;
 import datos.Empleado;
-import hibernate.Excepciones.HibernateSalvarCargoException;
+import hibernate.excepciones.HibernateSalvarCargoException;
 import java.util.Date;
 import java.util.List;
 import hibernate.CargoDaoImpl;
