@@ -31,7 +31,7 @@
 <!-- Global IE fix to avoid layout crash when single word size wider than column width -->
 <!--[if IE]><style type="text/css"> body {word-wrap: break-word;}</style><![endif]-->
 
-<h:body>
+<h:body styleClass="body">
   <!-- Main Page Container -->
   <div class="page-container">
 
@@ -187,8 +187,8 @@
                 </p>
 
                 <p>
-                    <h:commandButton type="submit" action="#{loginController}" id="Cancelar" styleClass="button" value=" Cancelar" tabindex="4" />
-                   <h:commandButton type="submit" action="reset" id="ingresar" styleClass="button" value=" Ingresar" tabindex="3" />
+                    <h:commandButton type="submit" action="reset" id="Cancelar" styleClass="button" value=" Cancelar" tabindex="4" />
+                   <h:commandButton type="submit" action="#{loginController.validarUsuario}" id="ingresar" styleClass="button" value=" Ingresar" tabindex="3" />
                 </p>
 
               <p>&nbsp;</p>

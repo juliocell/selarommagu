@@ -5,7 +5,7 @@
 
 package controlador;
 
-import modelo.BusinessLogin;
+import modelo.LoginNegocio;
 
 /**
  *
@@ -13,15 +13,16 @@ import modelo.BusinessLogin;
  */
 public class LoginController {
 
-    BusinessLogin negocio;
+    LoginNegocio negocio;
     String usuario;
     String password;
+    String datosEmpleado;
 
     public LoginController() {
-        this.negocio= new BusinessLogin();
+        this.negocio= new LoginNegocio();
     }
 
-    public BusinessLogin getNegocio() {
+    public LoginNegocio getNegocio() {
         return negocio;
     }
 
@@ -32,11 +33,7 @@ public class LoginController {
     public String getUsuario() {
         return usuario;
     }
-
-    public void setNegocio(BusinessLogin negocio) {
-        this.negocio = negocio;
-    }
-
+    
     public void setPassword(String password) {
         this.password = password;
     }
@@ -45,6 +42,19 @@ public class LoginController {
         this.usuario = usuario;
     }
 
+    public String validarUsuario(){
+
+        String salida = negocio.validarUsuario(this.usuario, this.password);
+        if(salida.isEmpty()){
+            return "fallo";        
+        }
+        else
+        {
+            this.datosEmpleado=salida;
+            return "ok";
+        }
+
+    }
 
 
     

@@ -10,7 +10,7 @@ import datos.Cargo;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import probador.ProbarHibernate;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -18,31 +18,39 @@ import probador.ProbarHibernate;
  */
 public class CargoDaoImpl{
 
+        Session sesion = null;
 
-    public void salvarCargo(Cargo elCargo, ProbarHibernate pro){
-        //ProbarHibernate laSession = new ProbarHibernate();
-        //Session sesion = laSession.getSessionFactory().getCurrentSession();
-        Session sesion = pro.getSessionFactory().getCurrentSession();
-        sesion.beginTransaction();//comienzo la transaccion
+    public CargoDaoImpl()
+    {
+        this.sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+    }
+
+
+
+
+    public void salvarCargo(Cargo elCargo){        
+        Transaction tx = sesion.beginTransaction();
         sesion.save(elCargo);
-        sesion.flush();
-        sesion.getTransaction().commit();
+        tx.commit();
         
     }
 
-    public boolean eliminarCargo(Cargo aBorrar, ProbarHibernate pro){
+    public boolean eliminarCargo(Cargo aBorrar){
 
-        Session sesion = pro.getSessionFactory().getCurrentSession();
-        sesion.beginTransaction();//comienzo la transaccion
+       
 
-        try{
+        try
+        {
+
+            Transaction tx = sesion.beginTransaction();
             Cargo aux = (Cargo)sesion.load(Cargo.class,aBorrar.getIdCargo());
             sesion.delete(aux);
-            sesion.getTransaction().commit();
-            //sesion.close();
+            tx.commit();            
             return true;
+
         }
-        catch(HibernateException ex){
+        catch(HibernateException ex)
+        {
             System.out.println("ERROR al eliminar Cargo:" + ex.getMessage());
             sesion.getTransaction().rollback();
             return false;
@@ -53,40 +61,39 @@ public class CargoDaoImpl{
         }
     }
 
-    public void actualizarCargo(Cargo aActualizar, ProbarHibernate pro){
-        Session sesion = pro.getSessionFactory().getCurrentSession();
-        sesion.beginTransaction();//comienzo la transaccion        
+    public void actualizarCargo(Cargo aActualizar){
+        Transaction tx = sesion.beginTransaction();
         sesion.update(aActualizar);
-        sesion.close();
+        tx.commit();
     }
 
-    public Cargo buscarCargoPorNombre(String nombre , ProbarHibernate pro){
+    public Cargo buscarCargoPorNombre(String nombre){
         
         String elQuery= "from Cargo as c where c.cargoDescripcion = "+ "\'"+nombre+"\'";// armo el query
-        //ProbarHibernate laSession = new ProbarHibernate();
-        //Session sesion = laSession.getSessionFactory().getCurrentSession();
-        Session sesion = pro.getSessionFactory().getCurrentSession();
-        sesion.beginTransaction();//comienzo la transaccion
+        Transaction tx = sesion.beginTransaction();//comienzo la transaccion
         List<Cargo> lista= sesion.createQuery(elQuery).list();
         Cargo aux=null;
+
         for (Cargo cargo : lista) {
             aux = cargo;
         }
-        sesion.getTransaction().commit();
-        
+
+        tx.commit();        
         return aux;
     }
 
-    public Cargo buscarCargoPorId(int id, ProbarHibernate pro){
-        Session sesion = pro.getSessionFactory().getCurrentSession();
-        sesion.beginTransaction();//comienzo la transaccion
-        
+    public Cargo buscarCargoPorId(int id){
+
+        Transaction tx = sesion.beginTransaction();
         try
         {
+            
             Cargo elCargo = (Cargo)sesion.load(Cargo.class, id);
+            tx.commit();
             return elCargo;
         }
         catch(HibernateException ex){
+            
             System.out.println("ERROR al buscar el Cargo:" + ex.getMessage());
             return null;
         }
@@ -96,12 +103,10 @@ public class CargoDaoImpl{
      * Metodo que devuelve una lista de objectos tipo Cargo
      * @return
      */
-    public List<Cargo>  listaCargo(ProbarHibernate pro)
+    public List<Cargo>  listaCargo()
     {
-        Session sesion = pro.getSessionFactory().getCurrentSession();
-        sesion.beginTransaction();//comienzo la transaccion
-        List<Cargo> resultado = (List<Cargo>)sesion.createQuery("from Cargo").list();
-        sesion.getTransaction().commit();
+        Transaction tx = sesion.beginTransaction();
+        List<Cargo> resultado = (List<Cargo>)sesion.createQuery("from Cargo").list();        
         if(resultado!=null)
         {
             for (Cargo cargo : resultado)
@@ -122,7 +127,7 @@ public class CargoDaoImpl{
   
     
 
-//TODO: hacer las pruebas de actualizar, buscar y listarCargo
+//TODO: modificar las pruebas de nuevo
 
 }
 

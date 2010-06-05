@@ -2,12 +2,11 @@
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
-        <Node id="login.html" x="650" y="150" zoom="true"/>
-        <Node id="cargoPrincipal.xhtml" x="150" y="300" zoom="true"/>
-        <Node id="login.xhtml" x="400" y="300" zoom="true"/>
-        <Node id="indexPrueba.html" x="150" y="150" zoom="true"/>
-        <Node id="index.xhtml" x="400" y="150" zoom="true"/>
-        <Node id="resources/ezcomp/out.xhtml" x="650" y="750" zoom="true"/>
+        <Node id="login.xhtml" x="447" y="122" zoom="true"/>
+        <Node id="index.xhtml" x="86" y="43" zoom="false"/>
+        <Node id="usuarioinvalido.xhtml" x="620" y="238" zoom="true"/>
+        <Node id="ventanaPrincipal.xhtml" x="273" y="257" zoom="true"/>
+        <Node id="cargoPrincipal.xhtml" x="44" y="148" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>

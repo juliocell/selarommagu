@@ -13,12 +13,6 @@
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
 version="2.0">
-    
-<managed-bean>
-    <managed-bean-name>controladorCargo</managed-bean-name>
-    <managed-bean-class>controlador.ControladorCargo</managed-bean-class>
-
-    <managed-bean-scope>session</managed-bean-scope></managed-bean>
 
 <managed-bean>
     <managed-bean-name>cargo</managed-bean-name>
@@ -33,17 +27,31 @@ version="2.0">
 </managed-bean>
 
 
-<navigation-rule>
-    <from-view-id>/index.xhtml</from-view-id>
-<navigation-case>
-<from-outcome>cargoPrincipal</from-outcome>
-<to-view-id>/cargoPrincipal.xhtml</to-view-id>
-</navigation-case>
-</navigation-rule>
 
+        <navigation-rule>
+            <from-view-id>/index.xhtml</from-view-id>
+                <navigation-case>
+                        <from-outcome>case1</from-outcome>
+                        <to-view-id>/login.xhtml</to-view-id>
+                </navigation-case>
+        </navigation-rule>
+            <navigation-rule>
+                    <from-view-id>/login.xhtml</from-view-id>
+                    <navigation-case>
+                            <from-outcome>ok</from-outcome>
+                            <to-view-id>/ventanaPrincipal.xhtml</to-view-id>
+                    </navigation-case>
+                    <navigation-case>
+                            <from-outcome>reset</from-outcome>
+                            <to-view-id>/login.xhtml</to-view-id>
+                    </navigation-case>
+                    <navigation-case>
+                            <from-outcome>fallo</from-outcome>
+                            <to-view-id>/usuarioinvalido.xhtml</to-view-id>
+                    </navigation-case>
+            </navigation-rule>
+    </faces-config>
 
-
-</faces-config>
 
 
 
