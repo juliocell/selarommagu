@@ -156,6 +156,62 @@ public class Empleado  implements java.io.Serializable{
         this.empleadosCorreo = empleadosCorreo;
     }
 
+    
+    public boolean equal(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Empleado other = (Empleado) obj;
+        if (this.idEmpleado != other.idEmpleado) {
+            return false;
+        }
+        if ((this.empleadosNombre == null) ? (other.empleadosNombre != null) : !this.empleadosNombre.equals(other.empleadosNombre)) {
+            return false;
+        }
+        if ((this.empleadosApellido == null) ? (other.empleadosApellido != null) : !this.empleadosApellido.equals(other.empleadosApellido)) {
+            return false;
+        }
+        if (this.empleadosCi != other.empleadosCi) {
+            return false;
+        }
+        if ((this.empleadosTlfMovil == null) ? (other.empleadosTlfMovil != null) : !this.empleadosTlfMovil.equals(other.empleadosTlfMovil)) {
+            return false;
+        }
+        if ((this.empleadosContrasena == null) ? (other.empleadosContrasena != null) : !this.empleadosContrasena.equals(other.empleadosContrasena)) {
+            return false;
+        }
+        if (this.empleadosSueldoBase != other.empleadosSueldoBase && (this.empleadosSueldoBase == null || !this.empleadosSueldoBase.equals(other.empleadosSueldoBase))) {
+            return false;
+        }
+        if ((this.empleadosLogin == null) ? (other.empleadosLogin != null) : !this.empleadosLogin.equals(other.empleadosLogin)) {
+            return false;
+        }
+        if ((this.empleadosCorreo == null) ? (other.empleadosCorreo != null) : !this.empleadosCorreo.equals(other.empleadosCorreo)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 79 * hash + this.idEmpleado;
+        hash = 79 * hash + (this.empleadosNombre != null ? this.empleadosNombre.hashCode() : 0);
+        hash = 79 * hash + (this.empleadosApellido != null ? this.empleadosApellido.hashCode() : 0);
+        hash = 79 * hash + this.empleadosCi;
+        hash = 79 * hash + (this.empleadosTlfMovil != null ? this.empleadosTlfMovil.hashCode() : 0);
+        hash = 79 * hash + (this.empleadosContrasena != null ? this.empleadosContrasena.hashCode() : 0);
+        hash = 79 * hash + (this.empleadosSueldoBase != null ? this.empleadosSueldoBase.hashCode() : 0);
+        hash = 79 * hash + (this.empleadosLogin != null ? this.empleadosLogin.hashCode() : 0);
+        hash = 79 * hash + (this.empleadosCorreo != null ? this.empleadosCorreo.hashCode() : 0);
+        return hash;
+    }
+
+ 
+
 
 
 

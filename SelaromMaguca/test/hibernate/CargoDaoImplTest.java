@@ -3,13 +3,13 @@
  * and open the template in the editor.
  */
 
-package modelo;
+package hibernate;
 
 
 import hibernate.CargoDaoImpl;
 import datos.Cargo;
 //import hibernate.HibernateUtil;
-import hibernate.HibernateSalvarCargoException;
+import hibernate.Excepciones.HibernateSalvarCargoException;
 import hibernate.HibernateUtil;
 import java.util.List;
 import org.hibernate.Session;

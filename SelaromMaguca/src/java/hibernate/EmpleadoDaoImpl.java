@@ -31,23 +31,23 @@ public class EmpleadoDaoImpl{
     public void salvarEmpleado(Empleado elEmpleado){
         Transaction tx = sesion.beginTransaction();//comienzo la transaccion
         sesion.save(elEmpleado);
-        sesion.flush();
+        //sesion.flush();
         
     }
 
     public boolean eliminarEmpleado(Empleado aBorrar){
 
-       // Transaction tx = sesion.beginTransaction();//comienzo la transaccion
+        Transaction tx = sesion.beginTransaction();//comienzo la transaccion
             
         try{
             Empleado aux = (Empleado)sesion.load(Empleado.class,aBorrar.getidEmpleado());
             sesion.delete(aux);
             sesion.flush();
-        //    tx.commit();
+        
             return true;
         }
         catch(HibernateException ex){
-          //  tx.rollback();
+            tx.rollback();
             sesion.getTransaction().rollback();
             System.out.println("ERROR al eliminar Empleado:" + ex.getMessage());            
             return false;
@@ -67,7 +67,7 @@ public class EmpleadoDaoImpl{
 
     public Empleado buscarEmpleadoPorNombre(String nombre){
         
-        String elQuery= "from Empleados as c where c.EmpleadoDescripcion = "+ "\'"+nombre+"\'";// armo el query
+        String elQuery= "from Empleado as c where c.empleadosNombre = "+ "\'"+nombre+"\'";// armo el query
         //Transaction tx = sesion.beginTransaction();//comienzo la transaccion
         List<Empleado> lista= sesion.createQuery(elQuery).list();
         Empleado aux=null;
@@ -118,6 +118,8 @@ public class EmpleadoDaoImpl{
 
         }
     }
+
+    
 
   
     
