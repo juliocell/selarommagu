@@ -18,6 +18,12 @@ public class UsuarioNoExisteException extends Exception{
         this.msj=msj;
     }
 
+    public String getMsj() {
+        return msj;
+    }
+
+
+    
     
 
 }

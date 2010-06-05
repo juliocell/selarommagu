@@ -7,8 +7,8 @@ package hibernate;
 
 import datos.Empleado;
 import org.hibernate.HibernateException;
-import org.hibernate.Transaction;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -50,7 +50,8 @@ public class LoginDaoImpl {
         }
         catch(HibernateException ex)
         {
-            tx.rollback();
+          //  tx.rollback();
+            sesion.getTransaction().rollback();
             System.out.println("ERROR al buscar el Usuario:" + ex.getMessage());
             throw new HibernateLoginException("Error al consultar BD por un LOGIN");            
             
@@ -59,6 +60,12 @@ public class LoginDaoImpl {
 
         
     }
+
+    public Session getSesion() {
+        return sesion;
+    }
+
+   
 }
 
 

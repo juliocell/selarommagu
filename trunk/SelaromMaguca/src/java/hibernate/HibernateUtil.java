@@ -27,7 +27,7 @@ public class HibernateUtil
             
         } catch (Throwable ex) {
             // muestro el error
-            System.err.println("SessionFactory fallo al iniciar" + ex);
+            System.err.println("SessionFactory FALLO AL TRATAR DE INICIAR HIBERNATEUTIL \n" + ex);
             throw new ExceptionInInitializerError(ex);
         }
     }

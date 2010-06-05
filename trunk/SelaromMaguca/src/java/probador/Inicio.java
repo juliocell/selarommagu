@@ -7,10 +7,13 @@ package probador;
 
 import datos.Cargo;
 import datos.Empleado;
+import hibernate.HibernateSalvarCargoException;
 import java.util.Date;
 import java.util.List;
 import hibernate.CargoDaoImpl;
 import hibernate.EmpleadoDaoImpl;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -29,15 +32,20 @@ public class Inicio {
         
         sesion = hibernate.HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = sesion.beginTransaction();//comienzo la transaccion
-        Cargo cargo = new Cargo("Gerente");
+        Cargo cargo = new Cargo("Cargo de Prueba");
         CargoDaoImpl gestionar = new CargoDaoImpl();
-        gestionar.salvarCargo(cargo);
-        Cargo aux =(Cargo)gestionar.buscarCargoPorNombre("Gerente");
+        try
+        {
+            gestionar.salvarCargo(cargo);
+        } catch (HibernateSalvarCargoException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Cargo aux =(Cargo)gestionar.buscarCargoPorNombre("Cargo de Prueba");
         Empleado emp = new Empleado(cargo, "freddy", "Nogales", 14015477, "slayer", new Date(), "isak", "mcdsx10@cantv.net");
         emp.setCargo(aux);
         EmpleadoDaoImpl gestEmp = new EmpleadoDaoImpl();
         gestEmp.salvarEmpleado(emp);
-
+        tx.commit();
     }
 
 

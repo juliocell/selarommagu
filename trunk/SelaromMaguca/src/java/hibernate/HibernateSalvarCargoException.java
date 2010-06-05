@@ -9,22 +9,18 @@ package hibernate;
  *
  * @author isak
  */
-public class HibernateLoginException extends Exception{
+public class HibernateSalvarCargoException extends Exception{
 
-    private final String msj;
+    String msj=null;
 
-    public HibernateLoginException(String msj) {
-        this.msj = msj;
+    public HibernateSalvarCargoException(String message) {
+        this.msj=message;
     }
 
     public String getMsj() {
         return msj;
     }
 
-   
-
-
-
-
+    
 
 }
