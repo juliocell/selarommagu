@@ -16,7 +16,7 @@ import org.hibernate.Transaction;
  *
  * @author isak
  */
-public class CargoDaoImpl{
+public class CargoDaoImpl {
 
         Session sesion = null;
 
@@ -28,10 +28,17 @@ public class CargoDaoImpl{
 
 
 
-    public void salvarCargo(Cargo elCargo){        
+    public void salvarCargo(Cargo elCargo) throws HibernateSalvarCargoException{
         Transaction tx = sesion.beginTransaction();
+        try
+        {
         sesion.save(elCargo);
-        tx.commit();
+        }
+        catch(HibernateException ex){
+            System.out.println("EXCEPCION: MENSAJE DE LA EXC = " + ex.getMessage());
+            throw new HibernateSalvarCargoException(ex.getMessage());
+        }
+        //sesion.flush();
         
     }
 
@@ -45,7 +52,8 @@ public class CargoDaoImpl{
             Transaction tx = sesion.beginTransaction();
             Cargo aux = (Cargo)sesion.load(Cargo.class,aBorrar.getIdCargo());
             sesion.delete(aux);
-            tx.commit();            
+            sesion.flush();
+            //tx.commit();
             return true;
 
         }
@@ -64,7 +72,8 @@ public class CargoDaoImpl{
     public void actualizarCargo(Cargo aActualizar){
         Transaction tx = sesion.beginTransaction();
         sesion.update(aActualizar);
-        tx.commit();
+        sesion.flush();
+        
     }
 
     public Cargo buscarCargoPorNombre(String nombre){
@@ -78,7 +87,7 @@ public class CargoDaoImpl{
             aux = cargo;
         }
 
-        tx.commit();        
+        //tx.commit();
         return aux;
     }
 
@@ -89,7 +98,7 @@ public class CargoDaoImpl{
         {
             
             Cargo elCargo = (Cargo)sesion.load(Cargo.class, id);
-            tx.commit();
+            //tx.commit();
             return elCargo;
         }
         catch(HibernateException ex){

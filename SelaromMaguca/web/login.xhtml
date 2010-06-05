@@ -172,7 +172,7 @@
         <h1 class="block">Ventana de logueo de usuario </h1>
         <div class="column1-unit">
           <div class="contactform">
-          <f:view>
+          
            <h:form id="loginForm" >
               <fieldset>
               <legend>&nbsp;Indique su login y password para accesar al SISTEMA &nbsp;</legend>
@@ -188,13 +188,13 @@
 
                 <p>
                     <h:commandButton type="submit" action="reset" id="Cancelar" styleClass="button" value=" Cancelar" tabindex="4" />
-                   <h:commandButton type="submit" action="#{loginController.validarUsuario}" id="ingresar" styleClass="button" value=" Ingresar" tabindex="3" />
+                   <h:commandButton type="submit" action="#{loginController.validarUsuario()}" id="ingresar" styleClass="button" value=" Ingresar" tabindex="3" />
                 </p>
 
               <p>&nbsp;</p>
               </fieldset>
             </h:form>
-          </f:view>
+          
           </div>
         </div>
         </div>

@@ -5,13 +5,18 @@
 
 package controlador;
 
+import java.io.Serializable;
+//import javax.faces.bean.ManagedBean;
+//import javax.faces.bean.RequestScoped;
 import modelo.LoginNegocio;
 
 /**
  *
  * @author isak
  */
-public class LoginController {
+//@ManagedBean
+//@RequestScoped
+public class LoginController implements java.io.Serializable{
 
     LoginNegocio negocio;
     String usuario;

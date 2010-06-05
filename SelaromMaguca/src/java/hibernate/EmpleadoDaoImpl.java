@@ -31,22 +31,24 @@ public class EmpleadoDaoImpl{
     public void salvarEmpleado(Empleado elEmpleado){
         Transaction tx = sesion.beginTransaction();//comienzo la transaccion
         sesion.save(elEmpleado);
-        tx.commit();
+        sesion.flush();
         
     }
 
     public boolean eliminarEmpleado(Empleado aBorrar){
 
-        Transaction tx = sesion.beginTransaction();//comienzo la transaccion
+       // Transaction tx = sesion.beginTransaction();//comienzo la transaccion
             
         try{
             Empleado aux = (Empleado)sesion.load(Empleado.class,aBorrar.getidEmpleado());
             sesion.delete(aux);
-            tx.commit();           
+            sesion.flush();
+        //    tx.commit();
             return true;
         }
         catch(HibernateException ex){
-            tx.rollback();
+          //  tx.rollback();
+            sesion.getTransaction().rollback();
             System.out.println("ERROR al eliminar Empleado:" + ex.getMessage());            
             return false;
         }
@@ -57,31 +59,32 @@ public class EmpleadoDaoImpl{
     }
 
     public void actualizarEmpleado(Empleado aActualizar){
-        Transaction tx = sesion.beginTransaction();//comienzo la transaccion
+      //  Transaction tx = sesion.beginTransaction();//comienzo la transaccion
         sesion.update(aActualizar);
-        tx.commit();
+        sesion.flush();
+       // tx.commit();
     }
 
     public Empleado buscarEmpleadoPorNombre(String nombre){
         
         String elQuery= "from Empleados as c where c.EmpleadoDescripcion = "+ "\'"+nombre+"\'";// armo el query
-        Transaction tx = sesion.beginTransaction();//comienzo la transaccion
+        //Transaction tx = sesion.beginTransaction();//comienzo la transaccion
         List<Empleado> lista= sesion.createQuery(elQuery).list();
         Empleado aux=null;
         for (Empleado empleado : lista) {
             aux = empleado;
         }
         //sesion.getTransaction().commit();
-        tx.commit();
+        //tx.commit();
         return aux;
     }
 
     public Empleado buscarEmpleadoPorId(int id){
-        Transaction tx = sesion.beginTransaction();//comienzo la transaccion
+       // Transaction tx = sesion.beginTransaction();//comienzo la transaccion
         try
         {
             Empleado elEmpleado = (Empleado)sesion.load(Empleado.class, id);
-            tx.commit();
+       //     tx.commit();
             return elEmpleado;
         }
         catch(HibernateException ex){
@@ -96,9 +99,9 @@ public class EmpleadoDaoImpl{
      */
     public List<Empleado>  listaEmpleado()
     {
-        Transaction tx = sesion.beginTransaction();//comienzo la transaccion
+       // Transaction tx = sesion.beginTransaction();//comienzo la transaccion
         List<Empleado> resultado = (List<Empleado>)sesion.createQuery("from Empleado").list();
-        tx.commit();
+       // tx.commit();
         if(resultado!=null)
         {
             for (Empleado empleado : resultado)

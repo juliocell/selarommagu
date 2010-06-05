@@ -5,7 +5,6 @@
 
 package modelo;
 
-import datos.Empleado;
 import hibernate.HibernateLoginException;
 import hibernate.LoginDaoImpl;
 import hibernate.UsuarioNoExisteException;
@@ -29,7 +28,7 @@ public class LoginNegocio
     {
         try
         {
-
+            loguear.getSesion().beginTransaction();
             String datosUsuario = loguear.buscarUsuarioPorLogin(usuario, password);
             if(datosUsuario.isEmpty()){
                 return "";
