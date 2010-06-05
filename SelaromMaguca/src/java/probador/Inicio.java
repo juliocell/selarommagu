@@ -5,13 +5,13 @@
 
 package probador;
 
-import selarom.datos.beans.Cargo;
-import selarom.datos.beans.Empleado;
+import datos.Cargo;
+import datos.Empleado;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
-import selarom.datos.hibernate.CargoDaoImpl;
-import selarom.datos.hibernate.EmpleadoDaoImpl;
+import hibernate.CargoDaoImpl;
+import hibernate.EmpleadoDaoImpl;
 import org.hibernate.Session;
 
 /**
