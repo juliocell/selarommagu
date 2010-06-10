@@ -18,19 +18,25 @@ import java.util.logging.Logger;
 public class LoginNegocio
 {
 
-    LoginDaoImpl loguear;
+    
 
     public LoginNegocio() {
-        this.loguear =  new LoginDaoImpl();
+        
     }
-
+    /**
+     * Metodo que busca al usuario por su login y password
+     * @param usuario
+     * @param password
+     * @return
+     */
     public String validarUsuario(String usuario, String password)
     {
         try
         {
-            loguear.getSesion().beginTransaction();
+            LoginDaoImpl loguear = new LoginDaoImpl();            
             String datosUsuario = loguear.buscarUsuarioPorLogin(usuario, password);
-            if(datosUsuario.isEmpty()){
+            if(datosUsuario.isEmpty())
+            {
                 return "";
             }
             else
@@ -42,12 +48,13 @@ public class LoginNegocio
         } 
         catch (HibernateLoginException ex)
         {
-            Logger.getLogger(LoginNegocio.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginNegocio.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
             return null;
         }
         catch (UsuarioNoExisteException ex)
         {
-            Logger.getLogger(LoginNegocio.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginNegocio.class.getName())
+            .log(Level.SEVERE, "ERROR: usuario o clave errado, por favor verifique", ex);
             return null;
         }
 
