@@ -5,7 +5,6 @@
 
 package controlador;
 
-import java.io.Serializable;
 //import javax.faces.bean.ManagedBean;
 //import javax.faces.bean.RequestScoped;
 import modelo.LoginNegocio;
@@ -16,21 +15,18 @@ import modelo.LoginNegocio;
  */
 //@ManagedBean
 //@RequestScoped
-public class LoginController implements java.io.Serializable{
+public class LoginController {
 
-    LoginNegocio negocio;
+    
     String usuario;
     String password;
     String datosEmpleado;
+ 
 
-    public LoginController() {
-        this.negocio= new LoginNegocio();
+    public LoginController() {        
     }
 
-    public LoginNegocio getNegocio() {
-        return negocio;
-    }
-
+    
     public String getPassword() {
         return password;
     }
@@ -48,8 +44,16 @@ public class LoginController implements java.io.Serializable{
     }
 
     public String validarUsuario(){
+        if(this.usuario.isEmpty()){
+        return "fallo";
+        }
+        if(this.password.isEmpty()){
+        return "fallo";
+        }
 
+        LoginNegocio negocio = new LoginNegocio();
         String salida = negocio.validarUsuario(this.usuario, this.password);
+        
         if(salida.isEmpty()){
             return "fallo";        
         }
