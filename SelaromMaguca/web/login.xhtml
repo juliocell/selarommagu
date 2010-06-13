@@ -182,7 +182,7 @@
                   
                   <h:panelGroup>
                       <h:inputText  id="usuario" value="#{loginController.usuario}"  tabindex="1" styleClass="field"  required="true" validatorMessage="El usuario debe tener al menos 5 caracteres" requiredMessage="Debe indicar un usuario">
-                        <f:validateLength minimum="2" maximum="50" />
+                     
                       </h:inputText>                    
                   </h:panelGroup>
 
@@ -192,7 +192,7 @@
 
                   <h:panelGroup>
                       <h:inputSecret id="clave" value="#{loginController.password}" tabindex="2" styleClass="field" required="true" requiredMessage="Debe indicar el password del Usuario" validatorMessage="El password debe ser al menos de 5 caracteres"/>
-                      <f:validateLength minimum="3" maximum="50" />
+                     
                   </h:panelGroup>
 
               </h:panelGrid>
