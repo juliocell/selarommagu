@@ -5,6 +5,7 @@
 
 package probador;
 
+import controlador.LoginController;
 import datos.Cargo;
 import datos.Empleado;
 import hibernate.excepciones.HibernateSalvarCargoException;
@@ -45,6 +46,8 @@ public class Inicio {
         emp.setCargo(aux);
         EmpleadoDaoImpl gestEmp = new EmpleadoDaoImpl();
         gestEmp.salvarEmpleado(emp);
+        LoginController controlador = new LoginController();
+        controlador.validarUsuario();
         tx.commit();
     }
 

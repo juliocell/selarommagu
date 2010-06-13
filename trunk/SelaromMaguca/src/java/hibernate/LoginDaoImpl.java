@@ -20,17 +20,17 @@ public class LoginDaoImpl {
 
     private Session sesion = null;
 
-    public LoginDaoImpl()
-    {
-       this.sesion = HibernateUtil.getSessionFactory().getCurrentSession();
-    }
+   
 
 
 
    public String buscarUsuarioPorLogin(String usuario, String password) throws UsuarioNoExisteException,HibernateLoginException{
-
+        if(this.sesion==null){
+            this.iniciarSesion();
+        }
+       
         String elQuery= "from Empleado as c where c.empleadosLogin =" + "\'"+usuario+"\'"; // armo el query      
-     //   Transaction tx = sesion.beginTransaction();//comienzo la transaccion
+        Transaction tx = sesion.beginTransaction();//comienzo la transaccion
 
         try
         {       
@@ -63,8 +63,31 @@ public class LoginDaoImpl {
         
     }
 
-    public Session getSesion() {
+ /**
+ * Metodo que inicia la sesion hibernate del objeto
+ */
+   public void iniciarSesion()
+   {
+       if(sesion==null)
+       {
+            this.sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+       }
+
+   }
+   /**
+    * Metodo que devuelve la sesion o la crea si esta no se ha iniciado antes.
+    * @return
+    */
+   public Session getSesion() {
+       if(sesion!=null)
+       {
         return sesion;
+       }
+       else
+       {
+        this.iniciarSesion();
+        return sesion;
+       }
     }
 
    
