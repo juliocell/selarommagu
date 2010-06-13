@@ -7,6 +7,9 @@ package controlador;
 
 //import javax.faces.bean.ManagedBean;
 //import javax.faces.bean.RequestScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 import modelo.LoginNegocio;
 
 /**
@@ -45,22 +48,26 @@ public class LoginController {
 
     public String validarUsuario(){
         if(this.usuario.isEmpty()){
-        return "fallo";
+        return "eusr";
         }
         if(this.password.isEmpty()){
-        return "fallo";
+        return "eclv";
         }
 
         LoginNegocio negocio = new LoginNegocio();
         String salida = negocio.validarUsuario(this.usuario, this.password);
-        
+        // String salida = negocio.validarUsuario("isaknog", "slayer");
         if(salida.isEmpty()){
             return "fallo";        
         }
         else
-        {
+        {   //aqui ingreso el usuario a la sesion una vez confirmado
+
             this.datosEmpleado=salida;
-            return "ok";
+            ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+            HttpSession session = (HttpSession)context.getSession(true);
+            session.setAttribute("usuarioLogin",usuario);
+            return "ok";//retorno ok para avanzar a la pagina principal
         }
 
     }

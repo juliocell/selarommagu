@@ -1,7 +1,7 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core" >
 
 <!--  Version: Multiflex-3 Update-2 / Overview             -->
 <!--  Date:    November 29, 2006                           -->
@@ -24,7 +24,7 @@
   <meta name="keywords" content="Your keywords, keywords, keywords, here ..." />
   <link rel="stylesheet" type="text/css" media="screen,projection,print" href="./css/layout4_setup.css" />
   <link rel="stylesheet" type="text/css" media="screen,projection,print" href="./css/layout4_text.css" />
-  <link rel="icon" type="image/x-icon" href="./img/favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="./img/favicon.ico" /> 
   <title>Inversiones Selaroma</title>
 </h:head>
 
@@ -84,7 +84,7 @@
             <!--<![endif]-->
             <!--[if lte IE 6]><table><tr><td><![endif]-->
             <ul>
-              <li><a href="login.html">Inicio de Login</a></li>
+              <li><a href="login.xhtml">Inicio de Login</a></li>
               <li><a href="index.html">Pagina Principal</a></li>
 
             </ul>
@@ -119,10 +119,9 @@
       <!-- Breadcrumbs -->
       <div class="header-breadcrumbs">
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Webdesign</a></li>
-          <li><a href="#">Templates</a></li>
-          <li>Multiflex-3</li>
+          <li><a href="#">Login</a></li>
+    
+    
         </ul>
 
         <!-- Search form -->
@@ -176,14 +175,32 @@
            <h:form id="loginForm" >
               <fieldset>
               <legend>&nbsp;Indique su login y password para accesar al SISTEMA &nbsp;</legend>
+              <h:panelGrid columns="2" columnClasses="etiquetaLogin,inputLogin">
+                  <h:panelGroup>
+                      <h:outputLabel styleClass="left" >Usuario:</h:outputLabel>
+                  </h:panelGroup>
+                  
+                  <h:panelGroup>
+                      <h:inputText  id="usuario" value="#{loginController.usuario}"  tabindex="1" styleClass="field"  required="true" validatorMessage="El usuario debe tener al menos 5 caracteres" requiredMessage="Debe indicar un usuario">
+                        <f:validateLength minimum="2" maximum="50" />
+                      </h:inputText>                    
+                  </h:panelGroup>
 
+                  <h:panelGroup>
+                      <h:outputLabel styleClass="left">Clave de Acceso:</h:outputLabel>
+                  </h:panelGroup>
+
+                  <h:panelGroup>
+                      <h:inputSecret id="clave" value="#{loginController.password}" tabindex="2" styleClass="field" required="true" requiredMessage="Debe indicar el password del Usuario" validatorMessage="El password debe ser al menos de 5 caracteres"/>
+                      <f:validateLength minimum="3" maximum="50" />
+                  </h:panelGroup>
+
+              </h:panelGrid>
                 <p>
-                   <h:outputText styleClass="left">Usuario:</h:outputText>
-                   <h:inputText  id="usuario" value="#{loginController.usuario}"  tabindex="1" styleClass="field"  required="true"/>
-                </p>
+                   </p>
                 <p>
-                   <h:outputText styleClass="left">Clave de Acceso:</h:outputText>
-                   <h:inputSecret id="clave" value="#{loginController.password}" tabindex="2" styleClass="field" required="true"/>
+                    
+                   
                 </p>
 
                 <p>
@@ -230,7 +247,7 @@
 
     <div class="footer">
       <p>Copyright &copy; 2010 Nogsoft Solutions C.A.| All Rights Reserved</p>
-      <p class="credits">Original design by <a href="#" title="Designer Homepage">Freddy Nogales </a> | Thanks to <a href="http://www.google.co.ve" title="Dubai Apartments">Dubai Apartments</a> | Powered by <a href="#" title="Content Management System">Your CMS</a> | <a href="http://validator.w3.org/check?uri=referer" title="Validate XHTML code">W3C XHTML 1.0</a> | <a href="http://jigsaw.w3.org/css-validator/" title="Validate CSS code">W3C CSS 2.0</a></p>
+      <p class="credits">Original design by <a href="#" title="Designer Homepage">Freddy Nogales </a> | Thanks to <a href="http://www.google.co.ve" title="Nogsoft C.A.">Ingenieria Nogsoft C.A.</a> | Powered by <a href="#" title="Content Management System">Your CMS</a> | <a href="http://validator.w3.org/check?uri=referer" title="Validate XHTML code">W3C XHTML 1.0</a> | <a href="http://jigsaw.w3.org/css-validator/" title="Validate CSS code">W3C CSS 2.0</a></p>
     </div>
   </div>
 
