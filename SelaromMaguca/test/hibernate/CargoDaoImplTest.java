@@ -6,11 +6,8 @@
 package hibernate;
 
 
-import hibernate.CargoDaoImpl;
 import datos.Cargo;
-//import hibernate.HibernateUtil;
 import hibernate.excepciones.HibernateSalvarCargoException;
-import hibernate.HibernateUtil;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -62,7 +59,7 @@ public class CargoDaoImplTest {
         instance.salvarCargo(elCargo);
         Cargo aux =(Cargo)instance.buscarCargoPorNombre("test cajero");            
         assertTrue(elCargo.equal(aux));
-        instance.eliminarCargo(elCargo);
+     //   instance.eliminarCargo(elCargo);
       
         //assertTrue(elCargo.equal(elCargo2));
         //TODO: poner unique al campo de nombre de la categoria

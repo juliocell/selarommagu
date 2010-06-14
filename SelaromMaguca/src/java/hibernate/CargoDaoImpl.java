@@ -21,19 +21,18 @@ public class CargoDaoImpl {
 
         Session sesion = null;
 
-    public CargoDaoImpl()
-    {
-        this.sesion = HibernateUtil.getSessionFactory().getCurrentSession();
-    }
+
 
 
 
 
     public void salvarCargo(Cargo elCargo) throws HibernateSalvarCargoException{
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = sesion.beginTransaction();
         try
         {
             sesion.save(elCargo);
+            tx.commit();
         }
         catch(HibernateException ex){
             System.out.println("EXCEPCION: MENSAJE DE LA EXC = " + ex.getMessage());
@@ -49,7 +48,7 @@ public class CargoDaoImpl {
 
         try
         {
-
+            sesion = HibernateUtil.getSessionFactory().getCurrentSession();
             Transaction tx = sesion.beginTransaction();
             Cargo aux = (Cargo)sesion.load(Cargo.class,aBorrar.getIdCargo());
             sesion.delete(aux);
@@ -71,6 +70,7 @@ public class CargoDaoImpl {
     }
 
     public void actualizarCargo(Cargo aActualizar){
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = sesion.beginTransaction();
         sesion.update(aActualizar);
         sesion.flush();
@@ -78,7 +78,7 @@ public class CargoDaoImpl {
     }
 
     public Cargo buscarCargoPorNombre(String nombre){
-        
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         String elQuery= "from Cargo as c where c.cargoDescripcion = "+ "\'"+nombre+"\'";// armo el query
         Transaction tx = sesion.beginTransaction();//comienzo la transaccion
         List<Cargo> lista= sesion.createQuery(elQuery).list();
@@ -93,7 +93,7 @@ public class CargoDaoImpl {
     }
 
     public Cargo buscarCargoPorId(int id){
-
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = sesion.beginTransaction();
         try
         {
@@ -115,6 +115,7 @@ public class CargoDaoImpl {
      */
     public List<Cargo>  listaCargo()
     {
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = sesion.beginTransaction();
         List<Cargo> resultado = (List<Cargo>)sesion.createQuery("from Cargo").list();        
         if(resultado!=null)

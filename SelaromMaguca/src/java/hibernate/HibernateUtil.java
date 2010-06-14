@@ -25,9 +25,10 @@ public class HibernateUtil
 
             sessionFactory = new Configuration().configure().buildSessionFactory();
             
-        } catch (Throwable ex) {
+        } catch (Exception ex) {
             // muestro el error
             System.err.println("SessionFactory FALLO AL TRATAR DE INICIAR HIBERNATEUTIL \n" + ex);
+            System.out.print(ex.getMessage());
             throw new ExceptionInInitializerError(ex);
         }
     }
