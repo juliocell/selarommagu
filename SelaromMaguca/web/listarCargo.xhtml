@@ -148,12 +148,10 @@
 
                     <!-- Navigation with grid style -->
                     <dl class="nav3-grid">
-                        <dt><h:outputLink value="insertarCargo.xhtml"><h:outputLabel value="Crear Cargo"/></h:outputLink></dt>
+                        <dt><h:outputLink value="insertarCargo.xhtml" ><h:outputLabel value="Crear Cargo"/></h:outputLink></dt>
                         <dt><h:outputLink value="gestionarCargo.xhtml"><h:outputLabel value="Buscar/Modificar/Eliminar Cargo"/></h:outputLink></dt>
                         <dt><h:outputLink value=""><h:outputLabel value="Listar Cargos"/></h:outputLink></dt>
                         <dt><h:outputLink value="ventanaPrincipal.xhtml"><h:outputLabel value="Pagina Principal"/></h:outputLink></dt>
-
-
                     </dl>
 
                     <!-- Template infos -->
@@ -175,27 +173,30 @@
                             <div class="contactform">
 
 
-
+                                <f:view>
                                 <h:form id="loginForm" >
                                     <fieldset>
                                         <legend>&nbsp;Cargos Existentes en el Sistema &nbsp;</legend>
-                                        <h:panelGrid columns="2" columnClasses="etiqueta,inputs">
-                                            <h:panelGroup>
-                                                <h:outputLabel styleClass="left" >Nombre Cargo:</h:outputLabel>
-                                            </h:panelGroup>
+                    <h:dataTable id="table" rows="20" value="#{controladorCargo.listaCargos}" var="cargo">
+                                            <h:column>
 
-                                            <h:panelGroup>
-                                                <h:inputText id="username" value="#{controladorCargo.cargoDescripcion}" styleClass="cargo" required="true" validatorMessage="Minimo 2 caracteres!" requiredMessage="El valor es requerido!!" maxlength="20" size="20" ></h:inputText>
-                                            </h:panelGroup>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Identificador" />
+                                                </f:facet>
+                                                <h:outputText id="id" value="#{cargo.idCargo}" />
 
-                                        </h:panelGrid>
-                                        &nbsp;
-                                        <h:message for="username" styleClass="error"/>
-                                        <input type="reset" value="Regresar" class="button"  />
-                                        <h:commandButton type="submit" value="Guardar" styleClass="button" style="left" action="#{controladorCargo.agregarCargo()}" />
-                                        &nbsp;
+                                            </h:column>
+                                            <h:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Nombre" />
+                                                </f:facet>
+                                                <h:outputText id="nombre" value="#{cargo.cargoDescripcion}" />
+                                            </h:column>
+
+                                        </h:dataTable>                                  
                                     </fieldset>
                                 </h:form>
+                                    </f:view>
 
                             </div>
                         </div>
