@@ -33,7 +33,7 @@ public class Inicio {
         
         sesion = hibernate.HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = sesion.beginTransaction();//comienzo la transaccion
-        Cargo cargo = new Cargo("Cargo de Prueba");
+        Cargo cargo = new Cargo("Cargo veronica");
         CargoDaoImpl gestionar = new CargoDaoImpl();
         try
         {
@@ -41,13 +41,12 @@ public class Inicio {
         } catch (HibernateSalvarCargoException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Cargo aux =(Cargo)gestionar.buscarCargoPorNombre("Cargo de Prueba");
+        Cargo aux =(Cargo)gestionar.buscarCargoPorNombre("Cargo veronica");
         Empleado emp = new Empleado(cargo, "freddy", "Nogales", 14015477, "slayer", new Date(), "isak", "mcdsx10@cantv.net");
         emp.setCargo(aux);
         EmpleadoDaoImpl gestEmp = new EmpleadoDaoImpl();
         gestEmp.salvarEmpleado(emp);
-        LoginController controlador = new LoginController();
-        controlador.validarUsuario();
+        LoginController controlador = new LoginController();       
         tx.commit();
     }
 

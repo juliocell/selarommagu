@@ -1,7 +1,7 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core" >
+      xmlns:f="http://java.sun.com/jsf/core">
 
 <!--  Version: Multiflex-3 Update-2 / Overview             -->
 <!--  Date:    November 29, 2006                           -->
@@ -171,10 +171,11 @@
         <h1 class="block">Ventana de logueo de usuario </h1>
         <div class="column1-unit">
           <div class="contactform">
-          
+
            <h:form id="loginForm" >
               <fieldset>
               <legend>&nbsp;Indique su login y password para accesar al SISTEMA &nbsp;</legend>
+               <div class="error"><h:message for="usuario" styleClass="error"/></div>
               <h:panelGrid columns="2" columnClasses="etiquetaLogin,inputLogin">
                   <h:panelGroup>
                       <h:outputLabel styleClass="left" >Usuario:</h:outputLabel>
