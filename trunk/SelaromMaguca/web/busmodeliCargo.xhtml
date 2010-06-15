@@ -119,7 +119,7 @@
                 <!-- Breadcrumbs -->
                 <div class="header-breadcrumbs">
                     <ul>
-                        <li><a href="#">Cargo</a></li>
+                        <li><a href="#">Gestionar Cargo</a></li>
 
 
                     </ul>
@@ -165,34 +165,58 @@
                 <div class="main-content">
 
                     <!-- Pagetitle -->
-                    <h1 class="pagetitle">CREAR CARGO </h1>
+                    <h1 class="pagetitle">BUSCAR ACTUALIZAR ELIMINAR CARGO </h1>
 
                     <!-- Content unit - One column -->
                     <div class="column1-unit">
                         <!-- Content unit - One column -->
-                        <h1 class="block">Ventana crear Cargo </h1>
+                        <h1 class="block">Ventana Gestion Cargo </h1>
                         <div class="column1-unit">
                             <div class="contactform">
 
 
 
-                                <h:form id="loginForm" >
+                                <h:form id="loginForm" rendered="true">
                                     <fieldset>
-                                        <legend>&nbsp;indique el nombre del Cargo &nbsp;</legend>
+                                        <legend>&nbsp;indique el nombre del Cargo a buscar &nbsp;</legend>
                                         <h:panelGrid columns="2" columnClasses="etiqueta,inputs">
                                             <h:panelGroup>
-                                                <h:outputLabel styleClass="left" >Nombre Cargo:</h:outputLabel>
+                                                  <h:inputText id="cargoBuscar" value="#{controladorCargo.cargoDescripcion}" styleClass="cargo" required="true" validatorMessage="Minimo 2 caracteres!" requiredMessage="El valor es requerido!!" maxlength="20" size="20" ></h:inputText>
+                                                  <h:message for="cargoBuscar" styleClass="error"/>
+                                                     <div class="error-div-login" >
+                                                        <h:message for="usuario" styleClass="error"/>
+                                                        <h:outputText styleClass="error" value="#{controladorCargo.error}"></h:outputText>
+                                                     </div>
                                             </h:panelGroup>
 
                                             <h:panelGroup>
-                                                <h:inputText id="username" value="#{controladorCargo.cargoDescripcion}" styleClass="cargo" required="true" validatorMessage="Minimo 2 caracteres!" requiredMessage="El valor es requerido!!" maxlength="20" size="20" ></h:inputText>
+                                                <h:outputLabel styleClass="center" ><h:commandButton type="submit" value="Buscar" styleClass="button" action="#{controladorCargo.buscarCargo()}"  /></h:outputLabel>
                                             </h:panelGroup>
 
                                         </h:panelGrid>
+                                         </fieldset>
+                                            </h:form>
+                                       
+                                           <h:form id="respuestaForm" rendered="true">
+                                               <fieldset>
+                                               <h:panelGrid columns="2" columnClasses="etiqueta,inputs">
+                                            <h:panelGroup>
+                                                <h:outputLabel styleClass="center">Id Cargo</h:outputLabel>
+                                            </h:panelGroup>
+                                            <h:panelGroup>
+                                                <h:outputText id="idCargo" value="#{controladorCargo.idCargo}" styleClass="cargo"  ></h:outputText>
+                                            </h:panelGroup>
+                                               <h:panelGroup>
+                                                <h:outputLabel styleClass="center">Nombre de Cargo</h:outputLabel>
+                                            </h:panelGroup>
+                                            <h:panelGroup>
+                                                <h:inputText id="nombre" value="#{controladorCargo.cargoDescripcion}" styleClass="cargo" required="true" validatorMessage="Minimo 2 caracteres!" requiredMessage="El valor es requerido!!" maxlength="20" size="20" ></h:inputText>
+                                            </h:panelGroup>
+                                        </h:panelGrid>
                                         &nbsp;
-                                        <h:message for="username" styleClass="error"/>
-                                        <h:commandButton type="reset" value="Resetear" styleClass="button"  />
-                                        <h:commandButton type="submit" value="Guardar" styleClass="button" style="left" action="#{controladorCargo.agregarCargo()}" />
+                                        
+                                        <h:commandButton type="submit" value="Eliminar" styleClass="button" action="#{controladorCargo.eliminarCargo()}" />
+                                        <h:commandButton type="submit" value="Guardar" styleClass="button" style="left" action="#{controladorCargo.agregarCargo()}"/>
                                         &nbsp;
                                     </fieldset>
                                 </h:form>
