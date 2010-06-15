@@ -72,5 +72,10 @@ private int listaValidar;
            eliminar.eliminarCargo(cargo);
     }
 
+      public Cargo buscandoCargo(String nombreCargo){
+        CargoDaoImpl buscar = new CargoDaoImpl();
+        Cargo aux = buscar.buscarCargoPorNombre(nombreCargo);
+        return aux;
+      }
 
 }

@@ -51,8 +51,8 @@ public class EmpleadoDaoImplTest {
 
     @Test
     public void testSalvarEmpleado() throws HibernateSalvarCargoException{
-        System.out.println("probando salvarEmpleado");
         Transaction tx = HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
+        System.out.println("probando salvarEmpleado");       
         Cargo car = new Cargo("cargo para empleado");
         CargoDaoImpl gesCar = new CargoDaoImpl();
         gesCar.salvarCargo(car);
@@ -67,7 +67,7 @@ public class EmpleadoDaoImplTest {
     @Test
     public void testActualizarEmpleado() throws HibernateSalvarCargoException{
         System.out.println("probando actualizarEmpleado");
-        Transaction tx = HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
+        //Transaction tx = HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
         Cargo car = new Cargo("cargo para ACtualizar empleado");
         CargoDaoImpl gesCar = new CargoDaoImpl();
         gesCar.salvarCargo(car);

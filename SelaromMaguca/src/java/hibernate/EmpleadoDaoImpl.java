@@ -22,27 +22,29 @@ public class EmpleadoDaoImpl{
 
     public EmpleadoDaoImpl()
     {
-        this.sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+      
     }
 
 
 
 
     public void salvarEmpleado(Empleado elEmpleado){
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = sesion.beginTransaction();//comienzo la transaccion
         sesion.save(elEmpleado);
+        tx.commit();
         //sesion.flush();
         
     }
 
     public boolean eliminarEmpleado(Empleado aBorrar){
-
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = sesion.beginTransaction();//comienzo la transaccion
             
         try{
             Empleado aux = (Empleado)sesion.load(Empleado.class,aBorrar.getidEmpleado());
             sesion.delete(aux);
-            sesion.flush();
+           // sesion.flush();
         
             return true;
         }
@@ -59,16 +61,17 @@ public class EmpleadoDaoImpl{
     }
 
     public void actualizarEmpleado(Empleado aActualizar){
-      //  Transaction tx = sesion.beginTransaction();//comienzo la transaccion
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = sesion.beginTransaction();//comienzo la transaccion
         sesion.update(aActualizar);
         sesion.flush();
-       // tx.commit();
+        tx.commit();
     }
 
     public Empleado buscarEmpleadoPorNombre(String nombre){
-        
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         String elQuery= "from Empleado as c where c.empleadosNombre = "+ "\'"+nombre+"\'";// armo el query
-        //Transaction tx = sesion.beginTransaction();//comienzo la transaccion
+        Transaction tx = sesion.beginTransaction();//comienzo la transaccion
         List<Empleado> lista= sesion.createQuery(elQuery).list();
         Empleado aux=null;
         for (Empleado empleado : lista) {
@@ -80,7 +83,8 @@ public class EmpleadoDaoImpl{
     }
 
     public Empleado buscarEmpleadoPorId(int id){
-       // Transaction tx = sesion.beginTransaction();//comienzo la transaccion
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = sesion.beginTransaction();//comienzo la transaccion
         try
         {
             Empleado elEmpleado = (Empleado)sesion.load(Empleado.class, id);
@@ -98,8 +102,8 @@ public class EmpleadoDaoImpl{
      * @return
      */
     public List<Empleado>  listaEmpleado()
-    {
-       // Transaction tx = sesion.beginTransaction();//comienzo la transaccion
+    {   sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = sesion.beginTransaction();//comienzo la transaccion
         List<Empleado> resultado = (List<Empleado>)sesion.createQuery("from Empleado").list();
        // tx.commit();
         if(resultado!=null)

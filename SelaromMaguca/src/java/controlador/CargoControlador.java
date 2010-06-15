@@ -17,18 +17,19 @@ public class CargoControlador {
 
     private List<Cargo> listaCargos = null;
     private String cargoDescripcion;
-    private String idCargo;
+    private int idCargo;
+    private String error=null;
 
 
 
 
     // ************************* Getters y Stters ************************
     
-     public String getIdCargo() {
+     public int getIdCargo() {
         return idCargo;
     }
 
-    public void setIdCargo(String idCargo) {
+    public void setIdCargo(int idCargo) {
         this.idCargo = idCargo;
     }
 
@@ -54,6 +55,14 @@ public class CargoControlador {
         return listaCargos;
        }
 
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
+
 // ********************************************************************************************
 
 public String agregarCargo() {
@@ -64,10 +73,26 @@ public String agregarCargo() {
 
 public void submitEliminar() {
     CargoNegocio insertarCargo = new CargoNegocio();
-    insertarCargo.eliminarCargo(cargoDescripcion,idCargo);
+    insertarCargo.eliminarCargo(cargoDescripcion,Integer.toString(idCargo));
 }
 
+public void buscarCargo(){
+ 
+ CargoNegocio buscarCargo = new CargoNegocio();
+ Cargo respuesta = buscarCargo.buscandoCargo(cargoDescripcion);
+ if(respuesta!=null){
+    this.setCargoDescripcion(respuesta.getCargoDescripcion());
+    this.setIdCargo(respuesta.getIdCargo());
+    this.setError("");
 
+ }
+ else
+ {
+    this.setError("Cargo no encontrado");
+ }
+ 
+
+}
 
 
 

@@ -49,7 +49,8 @@ public class LoginDaoImplTest {
 
     @Test
     public void buscarUsuarioPorLoginTest() throws UsuarioNoExisteException, HibernateSalvarCargoException, HibernateLoginException
-    {   
+    {
+        
         Cargo car = new Cargo("cargo VERIFICARLOGIN");
         CargoDaoImpl gesCar = new CargoDaoImpl();
         gesCar.salvarCargo(car);
