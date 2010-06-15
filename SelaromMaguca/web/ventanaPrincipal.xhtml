@@ -45,8 +45,8 @@
 
         <!-- Sitelogo and sitename -->
         <a class="sitelogo" href="#" title="Go to Start page"></a>
-        <div class="sitename">
-          <h1><a href="index.html" title="Go to Start page">Selarom<span style="font-weight:normal;font-size:50%;">&nbsp;</span></a></h1>
+        <div class="sitename">         
+          <h1><h:outputLink value="ventanaPrincipal.xhtml"><h:outputLabel value="Selarom" title="Ir a pagina Inicio"/></h:outputLink><span style="font-weight:normal;font-size:50%;">&nbsp;</span></h1>
           <h2>Venta de Repuestos Automotrices </h2>
         </div>
 
@@ -80,26 +80,22 @@
           <!-- Navigation item -->
           <ul>
 
-          <li><a href="#">Login</a>
+          <li><h:outputLink value="ventanaPrincipal.xhtml"><h:outputLabel value="Inicio"/></h:outputLink>
             <!--<![endif]-->
             <!--[if lte IE 6]><table><tr><td><![endif]-->
-            <ul>
-              <li><a href="login.xhtml">Inicio de Login</a></li>
-              <li><a href="index.html">Pagina Principal</a></li>
-
-            </ul>
+          
             <!--[if lte IE 6]></td></tr></table></a><![endif]-->
           </li>
           </ul>
         <ul>
 
-          <li><a href="#">Cargo</a>
+          <li><h:outputLink value="insertarCargo.xhtml"><h:outputLabel value="Cargos"/></h:outputLink>
             <!--<![endif]-->
             <!--[if lte IE 6]><table><tr><td><![endif]-->
             <ul>
               <li><h:outputLink value="insertarCargo.xhtml"><h:outputLabel value="Insertar Cargo"/></h:outputLink></li>
-              <li><a href="index.html">Modificar/Eliminar Cargo</a></li>
-			
+              <li><h:outputLink value=""><h:outputLabel value="Modificar/Eliminar"/></h:outputLink></li>            
+              <li><h:outputLink value="listarCargo.xhtml"><h:outputLabel value="Listar Cargos"/></h:outputLink></li>
             </ul>
             <!--[if lte IE 6]></td></tr></table></a><![endif]-->
           </li>
@@ -107,20 +103,43 @@
           <!-- Navigation item -->
           <ul>
 
-          <li><a href="#">Acerca de
-            <!--[if IE 7]><!-->
-            </a>
-            <!--<![endif]-->
-            <!--[if lte IE 6]><table><tr><td><![endif]-->
-            <ul>
-              <li><a href="#">Maestro Facturacion</a></li>
-              <li><a href="#">Clientes</a></li>
-            </ul>
-            <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+          <li><a href="#">Productos<!--[if IE 7]><!--></a>
+            <!--<![endif]-->        
           </li>
+              
           </ul>
-		   <ul>
+             <ul>
 
+          <li><a href="#">Empleados<!--[if IE 7]><!--></a>
+            <!--<![endif]-->
+            <ul>
+              <!--[if lte IE 6]><table><tr><td><![endif]-->
+              <li><h:outputLink value="insertarCargo.xhtml"><h:outputLabel value="Insertar Cargo"/></h:outputLink></li>
+              <li><a href="index.html">Modificar/Eliminar Cargo</a></li>
+
+            </ul>
+          </li>
+
+          </ul>
+          <ul>
+
+
+          </ul>
+      
+         
+               <!-- Navigation item -->
+          <ul>
+
+          <li><a href="#">Acerca de<!--[if IE 7]><!--></a>
+            <!--<![endif]-->
+          </li>
+
+          </ul>
+                     <ul>
+
+                   <li><h:outputLink onclick="#{loginController.salirSesion()}" ><h:outputLabel value="Salir" /></h:outputLink><!--[if IE 7]><!-->
+            <!--<![endif]-->
+          </li>
 
           </ul>
         </div>
@@ -131,8 +150,7 @@
       <!-- Breadcrumbs -->
       <div class="header-breadcrumbs">
         <ul>
-          <li><a href="#">Login</a></li>
-    
+          <li><h:outputLink value="ventanaPrincipal.xhtml" ><h:outputLabel value="Inicio"/></h:outputLink></li>    
     
         </ul>
 
@@ -156,13 +174,13 @@
 
         <!-- Navigation Level 3 -->
         <div class="round-border-topright"></div>
-		<h1 class="first">Login de Usuario </h1>
+		<h1 class="first">Menu Principal </h1>
 
         <!-- Navigation with grid style -->
         <dl class="nav3-grid">
-          <dt><a href="#">Inicio de Login</a></dt>
-          <dt><a href="#">Pagina Principal</a></dt>
-
+          
+          <dt><a href="">Pagina Principal</a></dt>
+          <dt><h:outputLink onclick="#{loginController.salirSesion()}" ><h:outputLabel value="Salir" /></h:outputLink></dt>
 
         </dl>
 
@@ -175,40 +193,21 @@
        <div class="main-content">
 
         <!-- Pagetitle -->
-        <h1 class="pagetitle">LOGIN DE  USUARIO </h1>
+        <h1 class="pagetitle">INVERSIONES SELAROMA </h1>
 
         <!-- Content unit - One column -->
         <div class="column1-unit">
          <!-- Content unit - One column -->
-        <h1 class="block">Ventana de logueo de usuario </h1>
+        <h1 class="block">Sistema de Automatizacion SELAROMA </h1>
         <div class="column1-unit">
           <div class="contactform">
           
            <h:form id="loginForm" >
               <fieldset>
-              <legend>&nbsp;Indique su login y password para accesar al SISTEMA &nbsp;</legend>
-              <h:panelGrid columns="2" columnClasses="etiquetaLogin,inputLogin">
-                  <h:panelGroup>
-                      <h:outputLabel styleClass="left" >Usuario:</h:outputLabel>
-                  </h:panelGroup>
-                  
-                  <h:panelGroup>
-                      <h:inputText  id="usuario" value="#{loginController.usuario}"  tabindex="1" styleClass="field"  required="true" validatorMessage="El usuario debe tener al menos 5 caracteres" requiredMessage="Debe indicar un usuario">
-                     
-                      </h:inputText>                    
-                  </h:panelGroup>
-
-                  <h:panelGroup>
-                      <h:outputLabel styleClass="left">Clave de Acceso:</h:outputLabel>
-                  </h:panelGroup>
-
-                  <h:panelGroup>
-                      <h:inputSecret id="clave" value="#{loginController.password}" tabindex="2" styleClass="field" required="true" requiredMessage="Debe indicar el password del Usuario" validatorMessage="El password debe ser al menos de 5 caracteres"/>
-                     
-                  </h:panelGroup>
-
-              </h:panelGrid>
-                <p>
+                  <legend>&nbsp;Bienvenido <h:outputText escape="false" value=" #{loginController.datosEmpleado} " styleClass="usuario"/> al Sistema SELAROMA &nbsp;</legend>
+        
+                  <p style="text-align: justify;margin-left: 10px;margin-right: 10px">  Sistema Selaroma, Para utilizar el sistema haga uso de las opciones del menu superior. Cualquier duda
+                    sobre el uso puede consultar el menu de la derecha, el cual le guiara en las distintas funciones de sistema.
                    </p>
                 <p>
                     

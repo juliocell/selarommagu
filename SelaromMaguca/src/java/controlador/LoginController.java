@@ -46,13 +46,12 @@ public class LoginController {
         this.usuario = usuario;
     }
 
+    public String getDatosEmpleado() {
+        return datosEmpleado.toUpperCase();
+    }
+
     public String validarUsuario(){
-        if(this.usuario.isEmpty()){
-        return "eusr";
-        }
-        if(this.password.isEmpty()){
-        return "eclv";
-        }
+ 
 
         LoginNegocio negocio = new LoginNegocio();
         String salida = negocio.validarUsuario(this.usuario, this.password);
@@ -69,6 +68,16 @@ public class LoginController {
             session.setAttribute("usuarioLogin",usuario);
             return "ok";//retorno ok para avanzar a la pagina principal
         }
+
+    }
+
+    public String salirSesion(){
+
+
+        ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+        HttpSession session = (HttpSession)context.getSession(true);
+        session.setAttribute("usuarioLogin",null);
+        return "logout";
 
     }
 
