@@ -2,11 +2,12 @@
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
-        <Node id="insertarCargo.xhtml" x="46" y="369" zoom="true"/>
+        <Node id="insertarCargo.xhtml" x="22" y="217" zoom="true"/>
         <Node id="login.xhtml" x="447" y="122" zoom="true"/>
         <Node id="index.xhtml" x="86" y="43" zoom="false"/>
-        <Node id="ventanaPrincipal.xhtml" x="273" y="257" zoom="true"/>
         <Node id="usuarioinvalido.xhtml" x="655" y="250" zoom="true"/>
+        <Node id="ventanaPrincipal.xhtml" x="273" y="257" zoom="true"/>
+        <Node id="listarCargo.xhtml" x="150" y="150" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>

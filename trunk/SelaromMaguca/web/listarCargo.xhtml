@@ -178,17 +178,17 @@
                                     <fieldset>
                                         <legend>&nbsp;Cargos Existentes en el Sistema &nbsp;</legend>
                     <h:dataTable id="table" rows="20" value="#{controladorCargo.listaCargos}" var="cargo">
-                                            <h:column>
+                                            <h:column headerClass="top">
 
                                                 <f:facet name="header">
-                                                    <h:outputText value="Identificador" />
+                                                    <h:outputLabel value="Identificador"/>
                                                 </f:facet>
                                                 <h:outputText id="id" value="#{cargo.idCargo}" />
 
                                             </h:column>
-                                            <h:column>
-                                                <f:facet name="header">
-                                                    <h:outputText value="Nombre" />
+                                            <h:column headerClass="top">
+                                                <f:facet name="header" >
+                                                    <h:outputLabel value="Nombre"  />
                                                 </f:facet>
                                                 <h:outputText id="nombre" value="#{cargo.cargoDescripcion}" />
                                             </h:column>

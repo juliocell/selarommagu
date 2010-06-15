@@ -148,8 +148,8 @@
 
         <!-- Navigation with grid style -->
         <dl class="nav3-grid">
-          <dt><a href="#">Inicio de Login</a></dt>
-          <dt><a href="#">Pagina Principal</a></dt>
+          <dt><a href="#">Login</a></dt>
+      
 
 
         </dl>
@@ -174,17 +174,18 @@
 
            <h:form id="loginForm" >
               <fieldset>
-              <legend>&nbsp;Indique su login y password para accesar al SISTEMA &nbsp;</legend>
-               <div class="error"><h:message for="usuario" styleClass="error"/></div>
+              <legend>&nbsp;Indique su Usuario y Clave para accesar al SISTEMA &nbsp;</legend>
+           
               <h:panelGrid columns="2" columnClasses="etiquetaLogin,inputLogin">
                   <h:panelGroup>
                       <h:outputLabel styleClass="left" >Usuario:</h:outputLabel>
                   </h:panelGroup>
                   
                   <h:panelGroup>
-                      <h:inputText  id="usuario" value="#{loginController.usuario}"  tabindex="1" styleClass="field"  required="true" validatorMessage="El usuario debe tener al menos 5 caracteres" requiredMessage="Debe indicar un usuario">
-                     
-                      </h:inputText>                    
+                      <h:inputText  id="usuario" value="#{loginController.usuario}"  tabindex="1" styleClass="field"  required="true"  requiredMessage="  Usuario no puede estar vacio" validatorMessage="El usuario debe tener al menos 5 caracteres"/>
+                       <div class="error-div-login" >
+                            <h:message for="usuario" styleClass="error"/>
+                       </div>                                        
                   </h:panelGroup>
 
                   <h:panelGroup>
@@ -192,12 +193,15 @@
                   </h:panelGroup>
 
                   <h:panelGroup>
-                      <h:inputSecret id="clave" value="#{loginController.password}" tabindex="2" styleClass="field" required="true" requiredMessage="Debe indicar el password del Usuario" validatorMessage="El password debe ser al menos de 5 caracteres"/>
-                     
+                      <h:inputSecret id="clave" value="#{loginController.password}" tabindex="2" styleClass="field" required="true" requiredMessage="  Debe indicar el password del Usuario" validatorMessage="El password debe ser al menos de 5 caracteres"/>
+                       <div class="error-div-login">
+                            <h:message for="clave" styleClass="error"/>
+                       </div>
                   </h:panelGroup>
 
               </h:panelGrid>
                 <p>
+        
                    </p>
                 <p>
                     
@@ -210,6 +214,9 @@
                 </p>
 
               <p>&nbsp;</p>
+         
+<!-- //TODO: falta cuadrar el marco de mensajes de error -->
+               
               </fieldset>
             </h:form>
           
@@ -226,7 +233,7 @@
 
           <div class="round-border-topleft"></div><div class="round-border-topright"></div>
          <h1 class="orange">Ayuda Login </h1>
-          <p><strong>Usuario:</strong>Indique el nombre del usuario valido asignado a usted. (SOLO LETRAS). De no poseerusuario registrado comuniquese con el administrador del Sistema. </p>
+          <p><strong>Usuario:</strong>Indique el nombre del usuario valido asignado a usted. (SOLO LETRAS). De no poseer un usuario registrado comuniquese con el administrador del Sistema. </p>
           <p><strong>Clave de Acceso :</strong> Indique el passworod de acceso al sistema.</p>
 		   <p><strong>Ingresar:</strong> PResione el boton ingresar para Validar los datos e ingresar al sistema.</p>
 		    <p><strong>Cancelar:</strong> Presione cancelar para limpiar el formulario.</p>
