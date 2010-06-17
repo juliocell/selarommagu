@@ -9,6 +9,7 @@ import controlador.LoginController;
 import datos.Cargo;
 import datos.Empleado;
 import hibernate.excepciones.HibernateSalvarCargoException;
+import hibernate.excepciones.HibernateSalvarEmpleadoException;
 import java.util.Date;
 import java.util.List;
 import hibernate.CargoDaoImpl;
@@ -45,7 +46,11 @@ public class Inicio {
         Empleado emp = new Empleado(cargo, "freddy", "Nogales", 14015477, "slayer", new Date(), "isak", "mcdsx10@cantv.net");
         emp.setCargo(aux);
         EmpleadoDaoImpl gestEmp = new EmpleadoDaoImpl();
-        gestEmp.salvarEmpleado(emp);
+//        try {
+//            gestEmp.salvarEmpleado(emp);
+//        } catch (HibernateSalvarEmpleadoException ex) {
+//            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         LoginController controlador = new LoginController();       
         tx.commit();
     }

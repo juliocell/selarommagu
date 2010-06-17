@@ -45,6 +45,11 @@ version="2.0">
     <managed-bean-scope>session</managed-bean-scope>
 </managed-bean>
 
+<managed-bean>
+    <managed-bean-name>controladorEmpleado</managed-bean-name>
+    <managed-bean-class>controlador.EmpleadoControlador</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+</managed-bean>
 
 
         <navigation-rule>
