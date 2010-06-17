@@ -7,6 +7,7 @@ package hibernate;
 
 //import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
 import datos.Empleado;
+import hibernate.excepciones.HibernateSalvarEmpleadoException;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -34,8 +35,25 @@ public class EmpleadoDaoImpl{
         sesion.save(elEmpleado);
         tx.commit();
         //sesion.flush();
-        
+
     }
+
+    public void salvarEmpleados(Empleado empleado) throws HibernateSalvarEmpleadoException{
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = sesion.beginTransaction();
+        try
+        {
+            sesion.save(empleado);
+            tx.commit();
+        }
+        catch(HibernateException ex){
+            throw new HibernateSalvarEmpleadoException(ex.getMessage());
+        }
+        //sesion.flush();
+
+    }
+
+
 
     public boolean eliminarEmpleado(Empleado aBorrar){
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
