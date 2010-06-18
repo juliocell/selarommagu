@@ -94,7 +94,7 @@
             <!--[if lte IE 6]><table><tr><td><![endif]-->
             <ul>
               <li><h:outputLink value="insertarCargo.xhtml"><h:outputLabel value="Insertar Cargo"/></h:outputLink></li>
-              <li><h:outputLink value=""><h:outputLabel value="Modificar/Eliminar"/></h:outputLink></li>            
+              <li><h:outputLink value="busmodeliCargo.xhtml"><h:outputLabel value="Modificar/Eliminar"/></h:outputLink></li>
               <li><h:outputLink value="listarCargo.xhtml"><h:outputLabel value="Listar Cargos"/></h:outputLink></li>
             </ul>
             <!--[if lte IE 6]></td></tr></table></a><![endif]-->
@@ -117,6 +117,9 @@
               <li><h:outputLink value="insertarEmpleado.xhtml"><h:outputLabel value="Insertar Empleado"/></h:outputLink></li>
               <li><h:outputLink value="insertarEmpleado.xhtml"><h:outputLabel value="Lista de Empleados"/></h:outputLink></li>
 
+              <li><h:outputLink value="busmodeliCargo.xhtml"><h:outputLabel value=">Modificar/Eliminar Cargo"/></h:outputLink></li>
+             
+
             </ul>
           </li>
 
@@ -126,7 +129,13 @@
 
           </ul>
       
-         
+                        <ul>
+
+                   <li><h:outputLink onclick="#{loginController.salirSesion()}" ><h:outputLabel value="Salir" /></h:outputLink><!--[if IE 7]><!-->
+            <!--<![endif]-->
+          </li>
+
+          </ul>
                <!-- Navigation item -->
           <ul>
 
@@ -135,13 +144,7 @@
           </li>
 
           </ul>
-                     <ul>
-
-                   <li><h:outputLink onclick="#{loginController.salirSesion()}" ><h:outputLabel value="Salir" /></h:outputLink><!--[if IE 7]><!-->
-            <!--<![endif]-->
-          </li>
-
-          </ul>
+      
         </div>
 	  </div>
 

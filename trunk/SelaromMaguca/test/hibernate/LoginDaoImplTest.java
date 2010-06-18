@@ -54,12 +54,14 @@ public class LoginDaoImplTest {
         Cargo car = new Cargo("cargo VERIFICARLOGIN");
         CargoDaoImpl gesCar = new CargoDaoImpl();
         gesCar.salvarCargo(car);
-        Empleado emp = new Empleado(car,"felix", "Ledezma", 25689741, "miclave", new Date(), "usuario", "fele@gmail.com");
+        Empleado emp = new Empleado(car,"felix", "Ledezma", 25689741, "12345", new Date(), "felix", "fele@gmail.com");
         EmpleadoDaoImpl gestionarEmpleado = new EmpleadoDaoImpl();
         gestionarEmpleado.salvarEmpleado(emp);
         LoginDaoImpl gestionarLogin = new LoginDaoImpl();
         String resultado = gestionarLogin.buscarUsuarioPorLogin("usuario", "miclave");
         assertFalse(resultado.isEmpty()); // verifico que la respuesta no sea vacia
+        gestionarEmpleado.eliminarEmpleado(emp);
+        gesCar.eliminarCargo(car);
         
     }
 
