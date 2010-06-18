@@ -5,7 +5,9 @@
 
 package controlador;
 
+import datos.Empleado;
 import hibernate.excepciones.ErrorFormatoFechaException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.EmpleadoNegocio;
@@ -27,6 +29,7 @@ private String empleadosSueldoBase;
 private String empleadosLogin;
 private String empleadosCorreo;
 private String nombreCargo;
+private List<Empleado> listaEmpleados;
 
     public String getNombreCargo() {
         return nombreCargo;
@@ -200,6 +203,22 @@ private String nombreCargo;
      */
     public void setEmpleadosCorreo(String empleadosCorreo) {
         this.empleadosCorreo = empleadosCorreo;
+    }
+
+    /**
+     * @return the listaEmpleados
+     */
+    public List<Empleado> getListaEmpleados() {
+        EmpleadoNegocio pedirListaEmpleados = new EmpleadoNegocio();
+        listaEmpleados = pedirListaEmpleados.mostrarEmpleados();
+        return listaEmpleados;
+    }
+
+    /**
+     * @param listaEmpleados the listaEmpleados to set
+     */
+    public void setListaEmpleados(List<Empleado> listaEmpleados) {
+        this.listaEmpleados = listaEmpleados;
     }
 
     /**
