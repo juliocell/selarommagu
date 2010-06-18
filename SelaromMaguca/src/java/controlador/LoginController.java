@@ -24,6 +24,19 @@ public class LoginController {
     String usuario;
     String password;
     String datosEmpleado;
+    String error;
+
+    public String getError() {
+        return error;
+    }
+
+    public void setDatosEmpleado(String datosEmpleado) {
+        this.datosEmpleado = datosEmpleado;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
  
 
     public LoginController() {        
@@ -57,12 +70,14 @@ public class LoginController {
         String salida = negocio.validarUsuario(this.usuario, this.password);
         // String salida = negocio.validarUsuario("isaknog", "slayer");
         if(salida.isEmpty()){
-            return "fallo";        
+            this.setError("ERROR: Combinacion usuario y password Invalida");
+            return "";
         }
         else
         {   //aqui ingreso el usuario a la sesion una vez confirmado
 
             this.datosEmpleado=salida;
+            this.setError("");
             ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
             HttpSession session = (HttpSession)context.getSession(true);
             session.setAttribute("usuarioLogin",usuario);

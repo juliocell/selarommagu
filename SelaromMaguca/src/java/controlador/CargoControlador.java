@@ -8,6 +8,8 @@ package controlador;
 import datos.Cargo;
 import java.util.List;
 import modelo.CargoNegocio;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -19,6 +21,7 @@ public class CargoControlador {
     private String cargoDescripcion;
     private int idCargo;
     private String error=null;
+    private CargoNegocio negocio = null;
 
 
 
@@ -66,20 +69,29 @@ public class CargoControlador {
 // ********************************************************************************************
 
 public String agregarCargo() {
-    CargoNegocio insertarCargo = new CargoNegocio();
-    String verificacion = insertarCargo.agregarCargo(cargoDescripcion);
+    this.instanciarNegocio();
+    String verificacion = negocio.agregarCargo(cargoDescripcion);
     return verificacion;
 }
 
-public void submitEliminar() {
-    CargoNegocio insertarCargo = new CargoNegocio();
-    insertarCargo.eliminarCargo(cargoDescripcion,Integer.toString(idCargo));
+public void eliminarCargo() {    
+    this.instanciarNegocio();
+    boolean respuesta= negocio.eliminarCargo(cargoDescripcion,idCargo);
+    if(respuesta){
+        this.setError("El cargo ha sido eliminado");
+        this.setIdCargo(0);
+        this.setCargoDescripcion("");
+    }else
+    {
+        this.setError("ERROR: NO SE PUDO ELIMINAR EL CARGO");
+    }
+
 }
 
 public void buscarCargo(){
  
- CargoNegocio buscarCargo = new CargoNegocio();
- Cargo respuesta = buscarCargo.buscandoCargo(cargoDescripcion);
+ this.instanciarNegocio();
+ Cargo respuesta = negocio.buscandoCargo(cargoDescripcion);
  if(respuesta!=null){
     this.setCargoDescripcion(respuesta.getCargoDescripcion());
     this.setIdCargo(respuesta.getIdCargo());
@@ -88,12 +100,36 @@ public void buscarCargo(){
  }
  else
  {
-    this.setError("Cargo no encontrado");
+    this.setError("ERROR: CARGO NO ENCONTRADO");
  }
  
 
 }
 
+
+public void actualizarCargo(){
+    this.setError("");
+    this.instanciarNegocio();
+    int respuesta = negocio.actualizandoCargo(this.getIdCargo());
+    if(respuesta==1){
+        this.setError("EL CARGO HA SIDO ACTUALIZADO");
+        
+    }
+    else{
+        this.setError("ERROR: El CARGO NO PUDO SER ACTUALIZADO");
+        
+    }
+}
+
+
+public void instanciarNegocio(){
+    if(negocio==null){
+        
+        this.negocio = new CargoNegocio();
+    }
+
+
+}
 
 
 }

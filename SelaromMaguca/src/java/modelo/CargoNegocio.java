@@ -63,19 +63,26 @@ private int listaValidar;
 
       }
 
-      public void eliminarCargo(String cargoDescripcion, String idCargo) {
+      public boolean eliminarCargo(String cargoDescripcion, int idCargo) {
         CargoDaoImpl eliminar = new CargoDaoImpl();
-        Cargo cargo = new Cargo();
-        int id = Integer.parseInt(idCargo);
+        Cargo cargo = new Cargo();        
         cargo.setCargoDescripcion(cargoDescripcion);
-        cargo.setIdCargo(id);
-           eliminar.eliminarCargo(cargo);
+        cargo.setIdCargo(idCargo);
+           boolean confirmado = eliminar.eliminarCargo(cargo);
+           return confirmado;
     }
 
       public Cargo buscandoCargo(String nombreCargo){
         CargoDaoImpl buscar = new CargoDaoImpl();
         Cargo aux = buscar.buscarCargoPorNombre(nombreCargo);
         return aux;
+      }
+
+      public int actualizandoCargo(int cargo){
+        CargoDaoImpl actualizar = new CargoDaoImpl();
+        Cargo aux = actualizar.buscarCargoPorId(cargo);
+        int respuesta = actualizar.actualizarCargo(aux);
+        return respuesta;
       }
 
 }

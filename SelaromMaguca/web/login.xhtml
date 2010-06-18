@@ -175,9 +175,13 @@
            <h:form id="loginForm" >
               <fieldset>
               <legend>&nbsp;Indique su Usuario y Clave para accesar al SISTEMA &nbsp;</legend>
-           
+              <div class="error-div-login" >
+                <h:outputText value="#{loginController.error}"></h:outputText>
+              </div>
+
               <h:panelGrid columns="2" columnClasses="etiquetaLogin,inputLogin">
                   <h:panelGroup>
+                      
                       <h:outputLabel styleClass="left" >Usuario:</h:outputLabel>
                   </h:panelGroup>
                   
