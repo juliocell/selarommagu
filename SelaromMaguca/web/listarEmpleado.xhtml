@@ -78,14 +78,17 @@
 
                         <!-- Navigation item -->
                         <ul>
+                            <li><h:outputLink value="ventanaPrincipal.xhtml"><h:outputLabel value="Pagina Principal"/></h:outputLink></li>
+                        </ul>
+                        <ul>
 
                             <li><a href="#">Empleado</a>
                                 <!--<![endif]-->
                                 <!--[if lte IE 6]><table><tr><td><![endif]-->
                                 <ul>
-                                    <li><a href="ventanaPrincipal.xhtml">Pagina Principal</a></li>
-                                    <li><a href="login.xhtml">Buscar/Modificar/Eliminar Empleado</a></li>
-                                    
+                                    <li><h:outputLink value="listarEmpleado.xhtml"><h:outputLabel value="Listar Empleados"/></h:outputLink></li>
+                                    <li><a href="">Buscar/Modificar/Eliminar Empleado</a></li>
+
 
                                 </ul>
                                 <!--[if lte IE 6]></td></tr></table></a><![endif]-->
@@ -119,7 +122,7 @@
                 <!-- Breadcrumbs -->
                 <div class="header-breadcrumbs">
                     <ul>
-                        <li><h:outputLink value="listarEmpleado.xhtml"><h:outputLabel value="Empleados"/></h:outputLink></li>
+                        <li><a href="#">Empleado</a></li>
 
 
                     </ul>
@@ -165,110 +168,138 @@
                 <div class="main-content">
 
                     <!-- Pagetitle -->
-                    <h1 class="pagetitle">CREAR EMPLEADO </h1>
+                    <h1 class="pagetitle">MOSTRAR LISTA DE EMPLEADOS </h1>
 
                     <!-- Content unit - One column -->
                     <div class="column1-unit">
                         <!-- Content unit - One column -->
-                        <h1 class="block">Ventana crear EMPLEADO </h1>
+                        <h1 class="block">Ventana Lista de Empleados </h1>
                         <div>
                             <div class="contactform">
 
 
+                                <f:view>
+                                <h:form id="listaEmpleadosForm" >
 
-                                <h:form id="insertarEmpleado" >
-                                   
-                                        <legend>&nbsp;LLene los datos del empleado a insertar &nbsp;</legend>
-                                        <h:panelGrid columns="2" border="1" >
+                                        <legend>&nbsp;Empleados Existentes en el Sistema &nbsp;</legend>
+                    <h:dataTable id="table" value="#{controladorEmpleado.listaEmpleados}" var="empleado">
 
-                                            <h:outputLabel styleClass="left" >Nombre:</h:outputLabel>
-                                              
-                                                
-                                            <h:inputText id="nombre" value="#{controladorEmpleado.empleadosNombre}" styleClass="cargo" required="true" requiredMessage="El valor es requerido!!" ></h:inputText>
-                                           
-                                            <h:outputLabel styleClass="left" >Apellido:</h:outputLabel>
-                                           
 
-                                             
-                                             
-                                                <h:inputText id="apellido" value="#{controladorEmpleado.empleadosApellido}" styleClass="cargo" required="true" requiredMessage="El valor es requerido!!" ></h:inputText>
-                                            
-                                                <h:outputLabel styleClass="left" >Cedula:</h:outputLabel>
-                                            
 
-                                             
-                                             
-                                                <h:inputText id="cedula" value="#{controladorEmpleado.empleadosCI}" styleClass="cargo" required="true" requiredMessage="El valor es requerido!!" ></h:inputText>
-                                            
-                                                <h:outputLabel styleClass="left" >Direccion:</h:outputLabel>
-                                            
 
-                                               
-                                             
-                                                <h:inputText id="direccion" value="#{controladorEmpleado.empleadosDir}" styleClass="cargo" required="true" requiredMessage="El valor es requerido!!" ></h:inputText>
-                                            
-                                           
-                                                <h:outputLabel styleClass="left" >Telefono Casa:</h:outputLabel>
-                                            
 
-                                              
-                                             
-                                                <h:inputText id="telefonoC" value="#{controladorEmpleado.empleadosTlfCasa}" styleClass="cargo" required="true" requiredMessage="El valor es requerido!!" ></h:inputText>
-                                            
-                                              
-                                                <h:outputLabel styleClass="left" >Telefono Movil:</h:outputLabel>
-                                            
+                                        <h:column>
 
-                                                
-                                             
-                                                <h:inputText id="telefonoM" value="#{controladorEmpleado.empleadosTlfMovil}" styleClass="cargo" required="true" requiredMessage="El valor es requerido!!" ></h:inputText>
-                                            
-                                                <h:outputLabel styleClass="left" >Contraseña:</h:outputLabel>
-                                            
+                                                <f:facet name="header">
+                                                    <h:outputLabel value="Cantidad"/>
+                                                </f:facet>
+                                                <h:outputText id="id" value="#{empleado.idEmpleado}" >
+                                                    <f:convertNumber /> </h:outputText>
 
-                                                 
-                                             
-                                                <h:inputText id="contrasena" value="#{controladorEmpleado.empleadosContrasena}" styleClass="cargo" required="true" requiredMessage="El valor es requerido!!" ></h:inputText>
-                                           
-                                                <h:outputLabel styleClass="left" >Fecha de Ingreso:</h:outputLabel>
-                                            
+                                            </h:column>
 
-                                                
-                                             
-                                                <h:inputText id="fechaIngreso" value="#{controladorEmpleado.empleadosFechaIng}" styleClass="cargo" required="true" requiredMessage="El valor es requerido!!" ></h:inputText>
-                                           
-                                                <h:outputLabel styleClass="left" >Saldo del Empleado:</h:outputLabel>
-                                            
+                                        <h:column>
 
-                                                
-                                             
-                                                <h:inputText id="sueldo" value="#{controladorEmpleado.empleadosSueldoBase}" styleClass="cargo" required="true" requiredMessage="El valor es requerido!!" ></h:inputText>
-                                           
-                                                <h:outputLabel styleClass="left" >Login:</h:outputLabel>
-                                            
+                                                <f:facet name="header">
+                                                    <h:outputLabel value="Nombre:"/>
+                                                </f:facet>
+                                                <h:outputText id="nombre" value="#{empleado.empleadosNombre}" />
 
-                                                 
-                                             
-                                                <h:inputText id="login" value="#{controladorEmpleado.empleadosLogin}" styleClass="cargo" required="true" requiredMessage="El valor es requerido!!" ></h:inputText>
-                                            
-                                                <h:outputLabel styleClass="left" >Correo:</h:outputLabel>
-                                            
+                                            </h:column>
+                                            <h:column>
+                                                <f:facet name="header" >
+                                                    <h:outputLabel value="Apellido:"  />
+                                                </f:facet>
+                                                <h:outputText id="apellido" value="#{empleado.empleadosApellido}" />
+                                            </h:column>
 
-                                                   
-                                            
-                                                <h:inputText id="correo" value="#{controladorEmpleado.empleadosCorreo}" styleClass="cargo" required="true" requiredMessage="El valor es requerido!!" ></h:inputText>
-                                            
-                                                <h:outputLabel styleClass="left" >Cargo:</h:outputLabel>
-                                            
-                                               <h:inputText id="cargo" value="#{controladorEmpleado.nombreCargo}" styleClass="cargo" required="true" requiredMessage="El valor es requerido!!" ></h:inputText>
-                                           
-                                       </h:panelGrid>
-                                        &nbsp;
-                                        
-                                        <h:commandButton type="submit" value="Guardar" styleClass="button" style="left" action="#{controladorEmpleado.agregarEmpleado}" />
-                                        &nbsp;
-                                    
+
+
+                        <h:column>
+                                                <f:facet name="header" >
+                                                    <h:outputLabel value="Direccion:"  />
+                                                </f:facet>
+                                                <h:outputText id="direccion" value="#{empleado.empleadosDir}" />
+                                            </h:column>
+
+                        <h:column>
+                                                <f:facet name="header" >
+                                                    <h:outputLabel value="Telf Casa:"  />
+                                                </f:facet>
+                                                <h:outputText id="telfCasa" value="#{empleado.empleadosTlfCasa}" />
+                                            </h:column>
+
+                        <h:column>
+                                                <f:facet name="header" >
+                                                    <h:outputLabel value="Telf Movil:"  />
+                                                </f:facet>
+                                                <h:outputText id="telfMovil" value="#{empleado.empleadosTlfMovil}" />
+                                            </h:column>
+
+                        <h:column>
+                                                <f:facet name="header" >
+                                                    <h:outputLabel value="Contraseña:"  />
+                                                </f:facet>
+                                                <h:outputText id="contrasena" value="#{empleado.empleadosContrasena}" />
+                                            </h:column>
+
+                        <h:column>
+                                                <f:facet name="header" >
+                                                    <h:outputLabel value="Fecha Ingreso:"  />
+                                                </f:facet>
+                                                <h:outputText id="fechaIngreso" value="#{empleado.empleadosFechaIng}" >
+                                                    <f:convertDateTime pattern="dd-MM-yyyy" /> </h:outputText>
+                                            </h:column>
+
+                        <h:column>
+                                                <f:facet name="header" >
+                                                    <h:outputLabel value="Sueldo:"  />
+                                                </f:facet>
+                                                <h:outputText id="sueldo" value="#{empleado.empleadosSueldoBase}" >
+                                                    <f:convertNumber /> </h:outputText>
+                                            </h:column>
+
+                        <h:column>
+                                                <f:facet name="header" >
+                                                    <h:outputLabel value="Login:"  />
+                                                </f:facet>
+                                                <h:outputText id="login" value="#{empleado.empleadosLogin}" />
+                                            </h:column>
+
+                         <h:column>
+                                                <f:facet name="header" >
+                                                    <h:outputLabel value="Correo:"  />
+                                                </f:facet>
+                                                <h:outputText id="correo" value="#{empleado.empleadosCorreo}" />
+                                            </h:column>
+
+
+                         <h:column>
+                                                <f:facet name="header" >
+                                                    <h:outputLabel value="Cargo:"  />
+                                                </f:facet>
+                                                <h:outputText id="cargo" value="#{empleado.idCargo}" />
+                                            </h:column>
+
+                        <h:column>
+                                                <f:facet name="header" >
+                                                    <h:outputLabel value="Cedula:"  />
+                                                </f:facet>
+                                                <h:outputText id="cedula" value="#{empleado.empleadosCI}" >
+                                                    <f:convertNumber type="number"/>
+                                                    <h:message for="cedula" />
+                                                </h:outputText>
+                                            </h:column>
+
+                                    </h:dataTable>
+
                                 </h:form>
+                                    </f:view>
+
+
+
+
+
 
 
                             </div>
@@ -289,7 +320,7 @@
                             En el caso de <strong>La fecha</strong> el formato para
                             la fecha es dd-mm-yyyy. Ejemplo: 10-06-2010
                             En el caso del Cargo indique un numero dependiendo del cargo
-                           
+
                         </p>
 
                         <p>
