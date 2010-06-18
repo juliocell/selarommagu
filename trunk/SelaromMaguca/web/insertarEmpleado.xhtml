@@ -260,15 +260,9 @@
                                             
                                                 <h:outputLabel styleClass="left" >Cargo:</h:outputLabel>
                                             
-
-                                                    
-                                             
-                                                <h:inputText id="cargo" value="#{controladorEmpleado.idCargo}" styleClass="cargo" required="true" requiredMessage="El valor es requerido!!" ></h:inputText>
+                                               <h:inputText id="cargo" value="#{controladorEmpleado.nombreCargo}" styleClass="cargo" required="true" requiredMessage="El valor es requerido!!" ></h:inputText>
                                            
-                                                  
-
-                                            
-                                        </h:panelGrid>
+                                       </h:panelGrid>
                                         &nbsp;
                                         
                                         <h:commandButton type="submit" value="Guardar" styleClass="button" style="left" action="#{controladorEmpleado.agregarEmpleado}" />
