@@ -13,6 +13,7 @@ import hibernate.excepciones.HibernateSalvarEmpleadoException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,7 +23,7 @@ import java.util.logging.Logger;
  * @author william
  */
 public class EmpleadoNegocio {
-
+private int listaValidar;
 
     public String agregarEmpleado(String empleadosNombre, String empleadosApellido, String empleadosCI, String empleadosDir, String empleadosTlfCasa, String empleadosTlfMovil, String empleadosContrasena, String empleadosFechaIng, String empleadosSueldoBase, String empleadosLogin, String empleadosCorreo, String nombreCargo) throws ErrorFormatoFechaException {
           EmpleadoDaoImpl agregar = new EmpleadoDaoImpl();
@@ -73,5 +74,33 @@ public class EmpleadoNegocio {
               
        
       }
+
+    public List<Empleado> mostrarEmpleados() {
+         EmpleadoDaoImpl listaMostrar = new EmpleadoDaoImpl();
+         List<Empleado> lista = listaMostrar.listaEmpleado();
+
+         if (lista == null) {
+               setListaValidar(0);
+         }
+         else {
+             setListaValidar(1);
+         }
+
+         return lista;
+    }
+
+    /**
+     * @return the listaValidar
+     */
+    public int getListaValidar() {
+        return listaValidar;
+    }
+
+    /**
+     * @param listaValidar the listaValidar to set
+     */
+    public void setListaValidar(int listaValidar) {
+        this.listaValidar = listaValidar;
+    }
 
 }
