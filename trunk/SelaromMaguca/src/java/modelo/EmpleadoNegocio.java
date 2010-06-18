@@ -24,13 +24,12 @@ import java.util.logging.Logger;
 public class EmpleadoNegocio {
 
 
-    public String agregarEmpleado(String empleadosNombre, String empleadosApellido, String empleadosCI, String empleadosDir, String empleadosTlfCasa, String empleadosTlfMovil, String empleadosContrasena, String empleadosFechaIng, String empleadosSueldoBase, String empleadosLogin, String empleadosCorreo, String idCargo) throws ErrorFormatoFechaException {
+    public String agregarEmpleado(String empleadosNombre, String empleadosApellido, String empleadosCI, String empleadosDir, String empleadosTlfCasa, String empleadosTlfMovil, String empleadosContrasena, String empleadosFechaIng, String empleadosSueldoBase, String empleadosLogin, String empleadosCorreo, String nombreCargo) throws ErrorFormatoFechaException {
           EmpleadoDaoImpl agregar = new EmpleadoDaoImpl();
-          Empleado empleado = new Empleado();
-          int id = Integer.parseInt(idCargo);
+          Empleado empleado = new Empleado();        
           CargoDaoImpl buscarIdCargo = new CargoDaoImpl();
           
-          empleado.setCargo(buscarIdCargo.buscarCargoPorId(id));
+          empleado.setCargo(buscarIdCargo.buscarCargoPorNombre(nombreCargo));
           empleado.setEmpleadosApellido(empleadosApellido);
           int ci = Integer.parseInt(empleadosCI);
           empleado.setEmpleadosCi(ci);
@@ -51,7 +50,7 @@ public class EmpleadoNegocio {
             fecha = sdf.parse(empleadosFechaIng);
             empleado.setEmpleadosFechaIng(fecha);
             try {
-                agregar.salvarEmpleados(empleado);
+                agregar.salvarEmpleado(empleado);
                 return "ok";
             } catch (HibernateSalvarEmpleadoException ex) {
                 Logger.getLogger(EmpleadoNegocio.class.getName()).log(Level.SEVERE, null, ex);

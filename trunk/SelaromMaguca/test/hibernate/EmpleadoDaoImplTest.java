@@ -8,6 +8,7 @@ package hibernate;
 import hibernate.excepciones.HibernateSalvarCargoException;
 import datos.Cargo;
 import datos.Empleado;
+import hibernate.excepciones.HibernateSalvarEmpleadoException;
 import java.util.Date;
 import java.util.List;
 import org.hibernate.Transaction;
@@ -50,7 +51,7 @@ public class EmpleadoDaoImplTest {
     // public void hello() {}
 
     @Test
-    public void testSalvarEmpleado() throws HibernateSalvarCargoException{
+    public void testSalvarEmpleado() throws HibernateSalvarCargoException, HibernateSalvarEmpleadoException{
         Transaction tx = HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
         System.out.println("probando salvarEmpleado");       
         Cargo car = new Cargo("cargo para empleado");
@@ -65,7 +66,7 @@ public class EmpleadoDaoImplTest {
     }
 
     @Test
-    public void testActualizarEmpleado() throws HibernateSalvarCargoException{
+    public void testActualizarEmpleado() throws HibernateSalvarCargoException, HibernateSalvarEmpleadoException{
         System.out.println("probando actualizarEmpleado");
         //Transaction tx = HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
         Cargo car = new Cargo("cargo para ACtualizar empleado");
@@ -85,7 +86,7 @@ public class EmpleadoDaoImplTest {
     }
 
     @Test
-    public void testEliminarEmpleado() throws HibernateSalvarCargoException{
+    public void testEliminarEmpleado() throws HibernateSalvarCargoException, HibernateSalvarEmpleadoException{
         System.out.println("probando eliminarEmpleado");
         Cargo car = new Cargo("cargo para empleado");
         CargoDaoImpl gesCar = new CargoDaoImpl();
@@ -98,7 +99,7 @@ public class EmpleadoDaoImplTest {
     }
 
     @Test
-    public void testBuscarEmpleadoPorNombre() throws HibernateSalvarCargoException
+    public void testBuscarEmpleadoPorNombre() throws HibernateSalvarCargoException, HibernateSalvarEmpleadoException
     {
         System.out.println("probando buscarEmpleadoPorNombre");
         EmpleadoDaoImpl instance = new EmpleadoDaoImpl();
@@ -113,7 +114,7 @@ public class EmpleadoDaoImplTest {
     }
 
     @Test
-    public void testBuscarEmpleadoPorId() throws HibernateSalvarCargoException{
+    public void testBuscarEmpleadoPorId() throws HibernateSalvarCargoException, HibernateSalvarEmpleadoException{
         System.out.println("probando testBuscarEmpleadoPorId");
         EmpleadoDaoImpl instance = new EmpleadoDaoImpl();
         Cargo car = new Cargo("cargo para empleado");
@@ -129,7 +130,7 @@ public class EmpleadoDaoImplTest {
     }
 
     @Test
-    public void testListaEmpleado() throws HibernateSalvarCargoException{
+    public void testListaEmpleado() throws HibernateSalvarCargoException, HibernateSalvarEmpleadoException{
         System.out.println("probando testListaEmpleado");
         Cargo car = new Cargo("cargo para empleado");
         CargoDaoImpl gesCar = new CargoDaoImpl();

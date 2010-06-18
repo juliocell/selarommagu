@@ -9,6 +9,7 @@ import datos.Cargo;
 import datos.Empleado;
 import hibernate.excepciones.HibernateLoginException;
 import hibernate.excepciones.HibernateSalvarCargoException;
+import hibernate.excepciones.HibernateSalvarEmpleadoException;
 import hibernate.excepciones.UsuarioNoExisteException;
 import java.util.Date;
 import org.hibernate.Session;
@@ -48,7 +49,7 @@ public class LoginDaoImplTest {
     }
 
     @Test
-    public void buscarUsuarioPorLoginTest() throws UsuarioNoExisteException, HibernateSalvarCargoException, HibernateLoginException
+    public void buscarUsuarioPorLoginTest() throws UsuarioNoExisteException, HibernateSalvarCargoException, HibernateLoginException, HibernateSalvarEmpleadoException
     {
         
         Cargo car = new Cargo("cargo VERIFICARLOGIN");
