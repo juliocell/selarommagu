@@ -8,8 +8,6 @@ package controlador;
 import datos.Cargo;
 import java.util.List;
 import modelo.CargoNegocio;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
 
 /**
  *
@@ -71,6 +69,7 @@ public class CargoControlador {
 public String agregarCargo() {
     this.instanciarNegocio();
     String verificacion = negocio.agregarCargo(cargoDescripcion);
+    this.setCargoDescripcion("");
     return verificacion;
 }
 
@@ -95,6 +94,7 @@ public void buscarCargo(){
  if(respuesta!=null){
     this.setCargoDescripcion(respuesta.getCargoDescripcion());
     this.setIdCargo(respuesta.getIdCargo());
+    
     this.setError("");
 
  }
