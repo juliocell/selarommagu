@@ -63,18 +63,21 @@ public class CargoDaoImpl {
             sesion.getTransaction().rollback();
             return false;
         }
-        finally{
-            
-                       
-        }
+       
     }
 
-    public void actualizarCargo(Cargo aActualizar){
+    public int actualizarCargo(Cargo aActualizar){
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = sesion.beginTransaction();
+        try{
         sesion.update(aActualizar);
         sesion.flush();
-        
+        tx.commit();
+        return 1;
+        }catch(HibernateException ex){
+            System.out.println(ex.getMessage());
+            return 0;
+        }
     }
 
     public Cargo buscarCargoPorNombre(String nombre){
@@ -92,13 +95,13 @@ public class CargoDaoImpl {
         return aux;
     }
 
-    public Cargo buscarCargoPorId(int id){
+    public Cargo buscarCargoPorId(int idcar){
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = sesion.beginTransaction();
         try
         {
             
-            Cargo elCargo = (Cargo)sesion.load(Cargo.class, id);
+            Cargo elCargo = (Cargo)sesion.load(Cargo.class, idcar);
             //tx.commit();
             return elCargo;
         }

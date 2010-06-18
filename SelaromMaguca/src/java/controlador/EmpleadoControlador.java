@@ -26,14 +26,22 @@ private String empleadosFechaIng;
 private String empleadosSueldoBase;
 private String empleadosLogin;
 private String empleadosCorreo;
-private String idCargo;
+private String nombreCargo;
+
+    public String getNombreCargo() {
+        return nombreCargo;
+    }
+
+    public void setNombreCargo(String nombreCargo) {
+        this.nombreCargo = nombreCargo;
+    }
 
 
      public String agregarEmpleado() {
         EmpleadoNegocio insertarEmpleado = new EmpleadoNegocio();
     String verificacion = null;
         try {
-            verificacion = insertarEmpleado.agregarEmpleado(empleadosNombre, empleadosApellido, empleadosCI, empleadosDir, empleadosTlfCasa, empleadosTlfMovil, empleadosContrasena, empleadosFechaIng, empleadosSueldoBase, empleadosLogin, empleadosCorreo, idCargo);
+            verificacion = insertarEmpleado.agregarEmpleado(empleadosNombre, empleadosApellido, empleadosCI, empleadosDir, empleadosTlfCasa, empleadosTlfMovil, empleadosContrasena, empleadosFechaIng, empleadosSueldoBase, empleadosLogin, empleadosCorreo, nombreCargo);
         } catch (ErrorFormatoFechaException ex) {
             Logger.getLogger(EmpleadoControlador.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -197,16 +205,7 @@ private String idCargo;
     /**
      * @return the idCargo
      */
-    public String getIdCargo() {
-        return idCargo;
-    }
 
-    /**
-     * @param idCargo the idCargo to set
-     */
-    public void setIdCargo(String idCargo) {
-        this.idCargo = idCargo;
-    }
 
 
 

@@ -28,17 +28,17 @@ public class EmpleadoDaoImpl{
 
 
 
+//
+//    public void salvarEmpleado(Empleado elEmpleado){
+//        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+//        Transaction tx = sesion.beginTransaction();//comienzo la transaccion
+//        sesion.save(elEmpleado);
+//        tx.commit();
+//        //sesion.flush();
+//
+//    }
 
-    public void salvarEmpleado(Empleado elEmpleado){
-        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
-        Transaction tx = sesion.beginTransaction();//comienzo la transaccion
-        sesion.save(elEmpleado);
-        tx.commit();
-        //sesion.flush();
-
-    }
-
-    public void salvarEmpleados(Empleado empleado) throws HibernateSalvarEmpleadoException{
+    public void salvarEmpleado(Empleado empleado) throws HibernateSalvarEmpleadoException{
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = sesion.beginTransaction();
         try
