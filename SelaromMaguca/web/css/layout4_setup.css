@@ -116,7 +116,7 @@
 .main-navigation .round-border-topright {width:10px; height:10px; position:absolute; z-index:100; margin:0 0 0 190px; background:url(../img/bg_corner_topright.gif) no-repeat;}
 
 /* MAIN CONTENT */
-
+.column {float:left; width:100px; margin-bottom:5px !important /*Non-IE6*/; margin-bottom:5px /*IE6*/;}
 .column1-unit {width:440px; margin-bottom:10px !important /*Non-IE6*/; margin-bottom:5px /*IE6*/;}
 .column2-unit-left {float:left; width:200px; margin-bottom:10px !important /*Non-IE6*/; margin-bottom:5px /*IE6*/;}
 .column2-unit-right {float:right; width:200px; margin-bottom:10px !important /*Non-IE6*/; margin-bottom:5px /*IE6*/;}
