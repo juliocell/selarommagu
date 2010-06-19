@@ -180,9 +180,9 @@
 
                                 <f:view>
                                 <h:form id="listaEmpleadosForm" >
-
+                                    <fieldset>
                                         <legend>&nbsp;Empleados Existentes en el Sistema &nbsp;</legend>
-                    <h:dataTable id="table" value="#{controladorEmpleado.listaEmpleados}" var="empleado">
+                                        <h:dataTable styleClass="main-content table empleado" value="#{controladorEmpleado.listaEmpleados}" var="empleado">
 
 
 
@@ -278,21 +278,21 @@
                                                 <f:facet name="header" >
                                                     <h:outputLabel value="Cargo:"  />
                                                 </f:facet>
-                                                <h:outputText id="cargo" value="#{empleado.idCargo}" />
+                                                <h:outputText id="cargo" value="#{empleado.cargo.cargoDescripcion}" />
                                             </h:column>
 
                         <h:column>
                                                 <f:facet name="header" >
                                                     <h:outputLabel value="Cedula:"  />
                                                 </f:facet>
-                                                <h:outputText id="cedula" value="#{empleado.empleadosCI}" >
+                                                <h:outputText id="cedula" value="#{empleado.empleadosCi}" >
                                                     <f:convertNumber type="number"/>
                                                     <h:message for="cedula" />
                                                 </h:outputText>
                                             </h:column>
 
                                     </h:dataTable>
-
+                                 </fieldset>
                                 </h:form>
                                     </f:view>
 
