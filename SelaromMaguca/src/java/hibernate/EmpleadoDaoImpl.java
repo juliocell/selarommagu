@@ -17,7 +17,7 @@ import org.hibernate.Transaction;
  *
  * @author isak
  */
-public class EmpleadoDaoImpl{
+public class EmpleadoDaoImpl implements EmpleadoDao{
 
     Session sesion=null;
 

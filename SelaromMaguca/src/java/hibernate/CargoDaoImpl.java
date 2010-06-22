@@ -17,24 +17,32 @@ import org.hibernate.Transaction;
  *
  * @author isak
  */
-public class CargoDaoImpl {
+public class CargoDaoImpl implements ICargoDao {
 
-        Session sesion = null;
-
-
+    Session sesion = null;
 
 
 
 
+
+/**
+ * Metodo que sirve para guardar el cargo.
+ * @param elCargo
+ * @throws HibernateSalvarCargoException
+ */
     public void salvarCargo(Cargo elCargo) throws HibernateSalvarCargoException{
+
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
-        Transaction tx = sesion.beginTransaction();
+        sesion.beginTransaction();
+
         try
         {
             sesion.save(elCargo);
-            tx.commit();
+            sesion.getTransaction().commit();
+            
         }
-        catch(HibernateException ex){
+        catch(HibernateException ex)
+        {
             System.out.println("EXCEPCION: MENSAJE DE LA EXC = " + ex.getMessage());
             throw new HibernateSalvarCargoException(ex.getMessage());
         }
@@ -49,11 +57,10 @@ public class CargoDaoImpl {
         try
         {
             sesion = HibernateUtil.getSessionFactory().getCurrentSession();
-            Transaction tx = sesion.beginTransaction();
+           
             Cargo aux = (Cargo)sesion.load(Cargo.class,aBorrar.getIdCargo());
             sesion.delete(aux);
-            sesion.flush();
-            //tx.commit();
+            sesion.flush();            
             return true;
 
         }
